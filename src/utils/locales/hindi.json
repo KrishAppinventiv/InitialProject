@@ -1,0 +1,22 @@
+{
+  "language": "Hindi",
+  "screens": {
+    "login": {
+      "title": "लॉगिन",
+      "text": {
+        "welcomeMessage": "ReelTrak में आपका स्वागत है",
+        "instruction": "अपना मोबाइल नंबर दर्ज करें, और हम आपको एक सत्यापन कोड भेजेंगे।",
+        "mobileNumber": "मोबाइल नंबर",
+        "next": "अगला",
+        "phoneError": {
+          "required": "फोन नंबर आवश्यक है।",
+          "invalid": "मोबाइल नंबर 5 से 13 अंकों के बीच होना चाहिए।"
+        },
+        "dontHaveAccount": "क्या आपके पास खाता नहीं है?",
+        "signUp": "साइन अप करें"
+      }
+    },
+    "multilingual": {
+      "continue": "जारी रखें",
+      "all_languages": "सभी भाषाएँ"
+    }}}

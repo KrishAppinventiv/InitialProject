@@ -1,0 +1,22 @@
+{
+  "language": "Japanese",
+  "screens": {
+    "login": {
+      "title": "ログイン",
+      "text": {
+        "welcomeMessage": "ReelTrakへようこそ",
+        "instruction": "携帯電話番号を入力すると、確認コードをSMSで送信します。",
+        "mobileNumber": "携帯電話番号",
+        "next": "次へ",
+        "phoneError": {
+          "required": "電話番号は必須です。",
+          "invalid": "携帯電話番号は5〜13桁でなければなりません。"
+        },
+        "dontHaveAccount": "アカウントをお持ちでないですか？",
+        "signUp": "サインアップ"
+      }
+    },
+    "multilingual": {
+      "continue": "続ける",
+      "all_languages": "すべての言語" 
+    }}}

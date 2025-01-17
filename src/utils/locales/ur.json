@@ -1,0 +1,22 @@
+{
+"language": "اردو",
+"screens": {
+  "login": {
+    "title": "لاگ ان",
+    "text": {
+      "welcomeMessage": "ReelTrak میں خوش آمدید",
+      "instruction": "اپنا موبائل نمبر درج کریں اور ہم آپ کو ایس ایم ایس کے ذریعے ایک تصدیقی کوڈ بھیجیں گے۔",
+      "mobileNumber": "موبائل نمبر",
+      "next": "اگلا",
+      "phoneError": {
+        "required": "موبائل نمبر ضروری ہے۔",
+        "invalid": "موبائل نمبر 5 سے 13 اعداد کا ہونا چاہیے۔"
+      },
+      "dontHaveAccount": "آپ کا کوئی اکاؤنٹ نہیں ہے؟",
+      "signUp": "سائن اپ کریں"
+    }
+  },
+  "multilingual": {
+    "continue": "جاری رکھیں",
+    "all_languages": "تمام زبانیں"
+  }}}

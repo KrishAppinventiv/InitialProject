@@ -1,0 +1,22 @@
+{
+  "language": "German",
+  "screens": {
+    "login": {
+      "title": "Anmeldung",
+      "text": {
+        "welcomeMessage": "Willkommen bei ReelTrak",
+        "instruction": "Geben Sie Ihre Handynummer ein, und wir senden Ihnen einen Bestätigungscode per SMS.",
+        "mobileNumber": "Handynummer",
+        "next": "Weiter",
+        "phoneError": {
+          "required": "Telefonnummer ist erforderlich.",
+          "invalid": "Die Handynummer muss zwischen 5 und 13 Ziffern liegen."
+        },
+        "dontHaveAccount": "Haben Sie noch kein Konto?",
+        "signUp": "Anmelden"
+      }
+    },
+    "multilingual": {
+      "continue": "Fortfahren",
+       "all_languages": "Alle Sprachen"
+    }}}

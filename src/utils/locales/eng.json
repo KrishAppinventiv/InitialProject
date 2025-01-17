@@ -1,0 +1,150 @@
+{
+    "language": "English",
+    "screens": {
+      "login": {
+        "title": "Login",
+        "text": {
+          "welcomeMessage": "Welcome to ReelTrak",
+          "instruction": "Enter your mobile number and we will text you a verification code.",
+          "mobileNumber": "Mobile Number",
+          "next": "Next",
+          "phoneError": {
+            "required": "Phone number is required.",
+            "invalid": "Mobile number must be between 5 and 13 digits."
+          },
+          "dontHaveAccount": "Don't have an account?",
+          "signUp": "Sign Up"
+         
+          
+        }
+      },
+      "multilingual":{
+          "continue":"Continue",
+           "all_languages": "All Languages"
+      },
+      "signUp": {
+        "title": "Create Account",
+        "description": "Fill in the information below to get started",
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email Address",
+        "mobile": "Mobile Number",
+        "terms": "Terms of Service",
+        "agree": "I Agree",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfUse": "Terms of Use",
+        "submit": "Next",
+        "alreadyHaveAccount": "Already have an account?",
+        "signIn": "Sign In",
+        "error": {
+          "phoneRequired": "Phone number is required.",
+          "invalidPhone": "Please enter a valid phone number.",
+          "invalidEmail": "Invalid email format.",
+          "emailRequired": "Email address is required."
+        }
+      },
+
+      "verifyOtp": {
+      "title": "OTP Verification",
+      "description": "Enter the code that we just sent to you on",
+      "phoneNumber": "+1*****5435",
+      "otpInputPlaceholder": "Enter OTP",
+      "verifyButton": "Verify OTP",
+      "error": {
+        "incorrectCode": "The code you entered is incorrect, you have {attempts} attempts remaining.",
+        "noAttempts": "No attempts remaining. Please request a new code.",
+        "otpExpired": "OTP Expired. Please request a new OTP."
+      },
+      "didntReceiveCode": "Didn't receive the code?",
+      "resend": "Resend",
+      "timer": "00:{timer}",
+      "modal": {
+        "tooManyAttempts": {
+          "title": "Too many failed attempts",
+          "content": "Your account has been locked, please try again in one hour.",
+          "button": "Back to Login"
+        },
+        "accountVerified": {
+          "title": "Account Verified!",
+          "content": "Your account has been verified successfully.",
+          "button": "Back to Login"
+        }
+      }
+    },
+
+    "studio": {
+    "helpMessage": "Help us to know you more",
+    "instruction": "Please indicate whether you are employed by a studio, production company, or are a freelance worker.",
+    "selectStudioMessage": "Please select the studio you work for",
+    "searchPlaceholder": "Search studio...",
+    "studios": {
+      "abc": "ABC",
+      "amazon": "Amazon Studios",
+      "apple": "Apple Studios",
+      "bbc": "BBC",
+      "cbs": "CBS",
+      "cnn": "CNN",
+      "disney": "Disney",
+      "fox": "Fox News",
+      "godaddy": "GoDaddy Studios"
+    },
+    "category": {
+      "studio": "Studio",
+      "productionCo": "Production Co.",
+      "freelance": "Freelance"
+    }
+  },
+
+  "department": {
+    "helpMessage": "Help us to know you more",
+    "instruction": "Please select your department",
+    "searchPlaceholder": "Search department...",
+    "departments": {
+      "casting": "Casting",
+      "editing": "Editing",
+      "makeup": "Makeup",
+      "production": "Production",
+      "location": "Location",
+      "artProps": "Art/Props",
+      "visualEffects": "Visual Effects",
+      "musicAndScore": "Music and Score",
+      "colorGrading": "Color Grading",
+      "marketing": "Marketing",
+      "legalFinance": "Legal and Finance",
+      "animalTrainers": "Animal Trainers",
+      "stuntCoordinator": "Stunt Coordinator",
+      "healthSafety": "Health & Safety",
+      "sustainability": "Sustainability"
+    }},
+    "position": {
+      "helpMessage": "Help us to know you more",
+      "instruction": "Please select your positions",
+      "searchPlaceholder": "Search positions...",
+      "positions": {
+        "manager": "Manager",
+        "screenwriter": "Screenwriter",
+        "directorPhotography": "Director of Photography",
+        "productionManager": "Production Manager",
+        "productionCoordinator": "Production Coordinator",
+        "productionAssistant": "Production Assistant",
+        "locationManager": "Location Manager",
+        "productionDesigner": "Production Designer",
+        "artDirector": "Art Director",
+        "setDesigner": "Set Designer"
+      }
+    },
+    "profile": {
+    "header": "Profile Setup",
+    "instruction": "Please add a profile photo to help your production team recognize you in the field.",
+    "photoPrompt": "Profile Photo",
+    "skip": "Skip",
+    "options": {
+      "uploadFromGallery": "Upload from Gallery",
+      "useCamera": "Use Camera"
+    }},
+  "buttons": {
+    "continue": "Continue"
+  }
+    }
+  }
+  
