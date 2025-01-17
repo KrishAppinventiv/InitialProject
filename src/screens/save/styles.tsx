@@ -93,6 +93,6 @@ export default StyleSheet.create({
             alignItems: 'center',
           },  
           darkContainer: {
-            backgroundColor: '#333',
+            backgroundColor:'#2d3040'
           },
 })

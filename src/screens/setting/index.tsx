@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   darkContainer: {
-    backgroundColor: '#333',
+    backgroundColor:'#2d3040'
   },
   settingItem: {
     marginBottom: 20,

@@ -231,38 +231,33 @@ const Signin = () => {
         </View>
 
         <View style={styles.textInputContain}>
-          <View
-            style={[styles.inputContainer, emailError && {borderColor: 'red'}]}>
+         
             <InputField
               ref={emailInputRef}
               placeholder="Email Address"
               value={Email}
               onChangeText={text => SetEmail(text.toLowerCase())}
               onSubmitEditing={handleEmailSubmit}
-              style={emailError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,emailError ? {borderColor: 'red'} : {}]}
               iconName={'email'}
             />
-          </View>
+          
 
-          <View
-            style={[
-              styles.inputContainer,
-              passwordError && {borderColor: 'red'},
-            ]}>
+          
             <InputField
               ref={passwordInputRef}
               placeholder="Password"
               value={Password}
               onChangeText={text => SetPassword(text)}
               secureTextEntry={!isPasswordVisible}
-              style={passwordError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,passwordError ? {borderColor: 'red'} : {}]}
               togglePasswordVisibility={() =>
                 setIsPasswordVisible(prev => !prev)
               }
               isPasswordVisible={isPasswordVisible}
               iconName="password"
             />
-          </View>
+        
         </View>
 
         <View style={styles.forget}>

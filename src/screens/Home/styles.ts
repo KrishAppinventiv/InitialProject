@@ -74,7 +74,7 @@ export default StyleSheet.create({
     marginHorizontal:vw(15)
   },
   darkContainer: {
-    backgroundColor: '#333',
+   backgroundColor:'#2d3040'
   },
   
     

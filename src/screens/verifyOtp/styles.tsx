@@ -217,7 +217,7 @@ export default StyleSheet.create({
         flex:1
       },
       darkMode:{
-       backgroundColor: '#333'
+      backgroundColor:'#2d3040'
       },
       lightMode:{
         backgroundColor:colors.white

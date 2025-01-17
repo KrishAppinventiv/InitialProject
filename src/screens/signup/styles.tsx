@@ -236,6 +236,16 @@ export default StyleSheet.create({
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor: '#333'
+        backgroundColor:'#2d3040'
+      },
+      inputField: {
+        paddingHorizontal: vh(8),
+        paddingVertical:vh(7),
+        marginVertical: 8,
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: '#ccc',
+        color: '#fff',
+        marginTop:vh(10)
       },
 })

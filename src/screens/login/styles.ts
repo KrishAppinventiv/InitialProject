@@ -104,7 +104,7 @@ export default StyleSheet.create({
         color: colors.main,
       },
       darkMode:{
-        backgroundColor:'#000000'
+        backgroundColor: '#2d3040',
       },
       lightMode:{
         backgroundColor:colors.white

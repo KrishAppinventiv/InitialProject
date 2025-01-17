@@ -203,7 +203,7 @@ const Signup = () => {
           <Text style={[styles.welText,{color:isDarkMode?"#ffffff":'#000'}]}>Sign up to get Started</Text>
         </View>
         <View style={styles.textInputContain}>
-          <View style={styles.inputContainer}>
+         
             <InputField
               ref={nameInputRef}
               placeholder="Name"
@@ -213,15 +213,12 @@ const Signup = () => {
               onSubmitEditing={() => {
                 phoneInputRef.current?.focus();
               }}
-              style={nameError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,nameError ? {borderColor: 'red'} : {}]}
               iconName="person"
             />
-          </View>
+         
 
-          <View style={[
-                styles.inputContainer,
-                phoneError && {borderColor: 'red'},
-              ]}>
+         
             <InputField
               ref={phoneInputRef}
               placeholder="Phone No."
@@ -232,52 +229,45 @@ const Signup = () => {
                 validatePhoneNumber(Phone)
                 birthInputRef.current?.focus();
               }}
-              style={phoneError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,phoneError ? {borderColor: 'red'} : {}]}
               iconName="phone"
             />
-          </View> 
+         
           <TouchableOpacity onPress={() => setModalVisible(true)}>
-            <View
-              style={[
-                styles.inputContainer,
-                birthError && {borderColor: 'red'},
-              ]}>
+            
               <InputField
                 ref={birthInputRef}
                 placeholder="DOB"
                 value={birthday}
                 onChangeText={text => setBirthday(text)}
                 returnKeyType="next"
+                style={[styles.inputField,birthError ? {borderColor: 'red'} : {}]}
                 onSubmitEditing={() => {
                   validateDate();
                   emailInputRef.current?.focus();
                 }}
                 iconName="calendar-month"
               />
-            </View>
+           
           </TouchableOpacity>
-          <View
-            style={[styles.inputContainer, emailError && {borderColor: 'red'}]}>
+         
             <InputField
               ref={emailInputRef}
               placeholder="Email Address"
               value={Email}
               onChangeText={text => SetEmail(text.toLowerCase())}
               returnKeyType="next"
+             
               onSubmitEditing={() => {
                 validateEmail(Email);
                 passwordInputRef.current?.focus();
               }}
-              style={emailError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,emailError ? {borderColor: 'red'} : {}]}
               iconName={'email'}
             />
-          </View>
+          
 
-          <View
-            style={[
-              styles.inputContainer,
-              passwordError && {borderColor: 'red'},
-            ]}>
+         
             <InputField
               ref={passwordInputRef}
               placeholder="Password"
@@ -288,7 +278,7 @@ const Signup = () => {
                 validatePassword(Password);
                 confrmpasswordInputRef.current?.focus();
               }}
-              style={passwordError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,passwordError ? {borderColor: 'red'} : {}]}
               secureTextEntry={!isPasswordVisible}
               togglePasswordVisibility={() =>
                 setIsPasswordVisible(prev => !prev)
@@ -296,13 +286,9 @@ const Signup = () => {
               isPasswordVisible={isPasswordVisible}
               iconName="password"
             />
-          </View>
+          
 
-          <View
-            style={[
-              styles.inputContainer,
-              cnfrmPasswordError && {borderColor: 'red'},
-            ]}>
+         
             <InputField
               ref={confrmpasswordInputRef}
               placeholder="Confirm Password"
@@ -313,7 +299,7 @@ const Signup = () => {
                 validateConfirmPassword(Password, CnfrmPassword);
                 handleSubmit();
               }}
-              style={passwordError ? {borderColor: 'red'} : {}}
+              style={[styles.inputField,cnfrmPasswordError ? {borderColor: 'red'} : {}]}
               secureTextEntry={!isPasswordVisible1}
               togglePasswordVisibility={() =>
                 setIsPasswordVisible1(prev => !prev)
@@ -322,7 +308,7 @@ const Signup = () => {
               iconName="password"
             />
           </View>
-        </View>
+        
 
         <Button
           onPress={() => handleSubmit()}

@@ -10,7 +10,7 @@ import {
   KeyboardAvoidingView,
   useColorScheme,
 } from 'react-native';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import {useNavigation} from '@react-navigation/native';
 import Toast from 'react-native-toast-message';
@@ -23,6 +23,7 @@ import styles from './styles';
 import {colors} from '../../theme';
 import {showToast} from '../../components/CustomToast';
 import { useTranslation } from 'react-i18next';
+import { ThemeContext } from '../../utils/theme-context';
 
 const Login = () => {
   const [countryCode, setCountryCode] = useState('+1');
@@ -33,8 +34,10 @@ const Login = () => {
   const navigation = useNavigation();
   const { t } = useTranslation();
   const [errorVisible, setErrorVisible] = useState(false);
-
+  const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
   const numberRef = useRef<TextInput | null>(null);
+ 
+  const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;    
 
   const validatePhoneNumber = (phone: string) => {
     const phoneRegex = /^[0-9]{5,13}$/;
@@ -82,10 +85,10 @@ const Login = () => {
       style={{flex: 1}}>
       <View style={[styles.container]}>
         <ImageBackground source={Images.tutorial} style={styles.ImgBg}>
-          <View style={[styles.modalView]}>
+          <View style={[styles.modalView,themeStyles]}>
             <View style={styles.headView}>
-              <Text style={styles.wlcmText}>{t('screens.login.text.welcomeMessage')}</Text>
-              <Text style={styles.grey}>
+              <Text style={[styles.wlcmText,{color:isDarkMode?'#ffffff':'#000'}]}>{t('screens.login.text.welcomeMessage')}</Text>
+              <Text style={[styles.grey,isDarkMode && {color:'#ccc'}]}>
               {t('screens.login.text.instruction')}
               </Text>
               <View
@@ -154,7 +157,7 @@ const Login = () => {
             />
 
             <View style={styles.dontView}>
-              <Text style={{color: 'black'}}>{t('screens.login.text.dontHaveAccount')}</Text>
+              <Text style={{color:isDarkMode?'#ffffff':'#000'}}>{t('screens.login.text.dontHaveAccount')}</Text>
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate(ScreenNames.Signup);
