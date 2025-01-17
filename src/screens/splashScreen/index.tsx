@@ -18,10 +18,10 @@ const SplashScreen = () => {
     }).start();
 
   useEffect(() => {
-    // Splash.hide();
+    
     viewAnimate();
     setTimeout(() => {
-      navigation.replace(ScreenNames.BottomTab);
+      navigation.replace(ScreenNames.Signin);
     }, 2000);
   }, []);
 

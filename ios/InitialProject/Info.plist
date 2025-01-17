@@ -56,6 +56,19 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+    <key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.619186265584-p8lqpofknpne2ua2568d0p9fooeaiick</string>
+			</array>
+		</dict>
+		
+    </array>
+	<key>GIDClientID</key>
+    <string>619186265584-p8lqpofknpne2ua2568d0p9fooeaiick.apps.googleusercontent.com</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>LSRequiresIPhoneOS</key>

@@ -26,28 +26,26 @@ import Toast from 'react-native-toast-message';
 import {colors} from '../../theme';
 import {showToast} from '../../components/CustomToast';
 import CustomModal from '../../components/CustomModal';
-// import {
-//   GoogleSignin,
-//   statusCodes
-// } from '@react-native-google-signin/google-signin';
+import {
+  GoogleSignin,
+  statusCodes
+} from '@react-native-google-signin/google-signin';
 import { Images } from '../../assets';
 import { ThemeContext } from '../../utils/theme-context';
-// import {
-//   auth,
-//   googleAuthProvider,
-//   signInWithFirebaseCredential
-// }from '../../firebase/firebaseConfig';
+import {
+  auth,
+}from '../../firebase/firebaseConfig';
 // import {
 //   AccessToken,
 //   AuthenticationToken,
 //   LoginManager,
 //   Profile
 // } from 'react-native-fbsdk-next';
-// import {
-//   FacebookAuthProvider,
-//   getAuth,
-//   signInWithCredential,
-// } from 'firebase/auth';
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithCredential
+} from 'firebase/auth';
 
 
 type SigninScreenNavigationProp = NativeStackNavigationProp<
@@ -89,52 +87,52 @@ const Signin = () => {
     return true;
   };
 
-  // const handleSignup = async () => {
-  //   console.log('ready');
-  //   try {
-  //     console.log('go');
-  //     await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
-  //     const response = await GoogleSignin.signIn();
-  //     console.log('12345678-->', response);
-  //     const idToken = response?.data?.idToken;
+  const handleSignup = async () => {
+    console.log('ready');
+    try {
+      console.log('go');
+      await GoogleSignin.hasPlayServices({showPlayServicesUpdateDialog: true});
+      const response = await GoogleSignin.signIn();
+      console.log('12345678-->', response);
+      const idToken = response?.data?.idToken;
 
-  //     if (!idToken) {
-  //       throw new Error('No idToken received from Google');
-  //     }
+      if (!idToken) {
+        throw new Error('No idToken received from Google');
+      }
 
-  //     const googleCredentials = googleAuthProvider.credential(idToken);
-  //     await signInWithFirebaseCredential(auth, googleCredentials);
-  //   } catch (error: any) {
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       console.log('User cancelled the login flow');
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       console.log('Sign in operation is in progress');
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       console.log('Google Play Services not available');
-  //     } else {
-  //       console.error('Error during Google Sign-In:', error);
-  //     }
-  //   }
-  // };
+      const googleCredentials = GoogleAuthProvider.credential(idToken);
+      await signInWithCredential(auth, googleCredentials);
+    } catch (error: any) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        console.log('User cancelled the login flow');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        console.log('Sign in operation is in progress');
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        console.log('Google Play Services not available');
+      } else {
+        console.error('Error during Google Sign-In:', error);
+      }
+    }
+  };
 
-  // useEffect(() => {
-  //   console.log('Configuring Google SignIn...');
-  //   try {
-  //     console.log(GoogleSignin);
-  //     GoogleSignin.configure({
-  //       webClientId: '619186265584-s3un8qc1pk4o5i35dfasurpopjbed12i.apps.googleusercontent.com', // Web Client ID for Android
-  //       iosClientId: '619186265584-p8lqpofknpne2ua2568d0p9fooeaiick.apps.googleusercontent.com', // Web Client ID for iOS
-  //       offlineAccess: true
-  //     });
-  //     console.log('Google SignIn configured');
-  //   } catch (error) {
-  //     console.error('Error configuring Google SignIn:', error);
-  //   }
+  useEffect(() => {
+    console.log('Configuring Google SignIn...');
+    try {
+      console.log(GoogleSignin);
+      GoogleSignin.configure({
+        webClientId: '619186265584-s3un8qc1pk4o5i35dfasurpopjbed12i.apps.googleusercontent.com', // Web Client ID for Android
+        iosClientId: '619186265584-p8lqpofknpne2ua2568d0p9fooeaiick.apps.googleusercontent.com', // Web Client ID for iOS
+        offlineAccess: true
+      });
+      console.log('Google SignIn configured');
+    } catch (error) {
+      console.error('Error configuring Google SignIn:', error);
+    }
 
-  //   setTimeout(() => {
-  //     emailInputRef.current?.focus();
-  //   }, 100);
-  // }, []);
+    setTimeout(() => {
+      emailInputRef.current?.focus();
+    }, 100);
+  }, []);
 
   const validatePassword = (password: string): boolean => {
     if (password.length < 6) {
@@ -242,8 +240,6 @@ const Signin = () => {
               iconName={'email'}
             />
           
-
-          
             <InputField
               ref={passwordInputRef}
               placeholder="Password"
@@ -279,7 +275,7 @@ const Signin = () => {
         </View>
 
         <View style={styles.otherOption}>
-          <TouchableOpacity activeOpacity={0.6} >
+          <TouchableOpacity activeOpacity={0.6} onPress={()=> handleSignup()}>
             <View style={styles.googleView}>
               <Image source={Images.google} style={styles.google} />
               <Text style={{fontSize: vh(15), fontWeight: '600'}}>
@@ -295,7 +291,7 @@ const Signin = () => {
                   fontSize: vh(15),
                   marginLeft: vw(6),
                   color: 'white',
-                  fontWeight: '600',
+                  fontWeight: '600'
                 }}>
                 Sign in with Facebook
               </Text>
