@@ -1,22 +1,147 @@
 {
-"language": "اردو",
-"screens": {
-  "login": {
-    "title": "لاگ ان",
-    "text": {
-      "welcomeMessage": "ReelTrak میں خوش آمدید",
-      "instruction": "اپنا موبائل نمبر درج کریں اور ہم آپ کو ایس ایم ایس کے ذریعے ایک تصدیقی کوڈ بھیجیں گے۔",
-      "mobileNumber": "موبائل نمبر",
-      "next": "اگلا",
-      "phoneError": {
-        "required": "موبائل نمبر ضروری ہے۔",
-        "invalid": "موبائل نمبر 5 سے 13 اعداد کا ہونا چاہیے۔"
+  "language": "اردو",
+  "screens": {
+    "login": {
+      "title": "لاگ ان",
+      "text": {
+        "welcomeMessage": "ReelTrak میں خوش آمدید",
+        "instruction": "اپنا موبائل نمبر درج کریں اور ہم آپ کو ایس ایم ایس کے ذریعے ایک تصدیقی کوڈ بھیجیں گے۔",
+        "mobileNumber": "موبائل نمبر",
+        "next": "اگلا",
+        "phoneError": {
+          "required": "موبائل نمبر ضروری ہے۔",
+          "invalid": "موبائل نمبر 5 سے 13 اعداد کا ہونا چاہیے۔"
+        },
+        "dontHaveAccount": "آپ کا کوئی اکاؤنٹ نہیں ہے؟",
+        "signUp": "سائن اپ کریں"
+      }
+    },
+    "multilingual": {
+      "continue": "جاری رکھیں",
+      "all_languages": "تمام زبانیں"
+    },
+    "signUp": {
+      "title": "اکاؤنٹ بنائیں",
+      "description": "شروع کرنے کے لیے نیچے دی گئی معلومات درج کریں",
+      "firstName": "پہلا نام",
+      "lastName": "آخری نام",
+      "email": "ای میل ایڈریس",
+      "mobile": "موبائل نمبر",
+      "terms": "سروس کی شرائط",
+      "agree": "میں متفق ہوں",
+      "privacyPolicy": "رازداری کی پالیسی",
+      "termsOfUse": "استعمال کی شرائط",
+      "submit": "اگلا",
+      "alreadyHaveAccount": "پہلے سے ہی اکاؤنٹ ہے؟",
+      "signIn": "سائن ان کریں",
+      "error": {
+        "phoneRequired": "موبائل نمبر ضروری ہے۔",
+        "invalidPhone": "براہ کرم درست موبائل نمبر درج کریں۔",
+        "invalidEmail": "ای میل کا فارمیٹ غلط ہے۔",
+        "emailRequired": "ای میل ایڈریس ضروری ہے۔"
+      }
+    },
+    "verifyOtp": {
+      "title": "او ٹی پی تصدیق",
+      "description": "وہ کوڈ درج کریں جو ہم نے آپ کو بھیجا ہے",
+      "phoneNumber": "+1*****5435",
+      "otpInputPlaceholder": "او ٹی پی درج کریں",
+      "verifyButton": "او ٹی پی کی تصدیق کریں",
+      "error": {
+        "incorrectCode": "آپ کا درج کردہ کوڈ غلط ہے، آپ کے پاس {attempts} کوششیں باقی ہیں۔",
+        "noAttempts": "مزید کوششیں باقی نہیں ہیں۔ براہ کرم نیا کوڈ طلب کریں۔",
+        "otpExpired": "او ٹی پی کی میعاد ختم ہو گئی ہے۔ براہ کرم نیا او ٹی پی طلب کریں۔"
       },
-      "dontHaveAccount": "آپ کا کوئی اکاؤنٹ نہیں ہے؟",
-      "signUp": "سائن اپ کریں"
+      "didntReceiveCode": "کوڈ موصول نہیں ہوا؟",
+      "resend": "دوبارہ بھیجیں",
+      "timer": "00:{timer}",
+      "modal": {
+        "tooManyAttempts": {
+          "title": "بہت زیادہ ناکام کوششیں",
+          "content": "آپ کا اکاؤنٹ مقفل کر دیا گیا ہے، براہ کرم ایک گھنٹے بعد دوبارہ کوشش کریں۔",
+          "button": "واپس لاگ ان پر"
+        },
+        "accountVerified": {
+          "title": "اکاؤنٹ تصدیق شدہ!",
+          "content": "آپ کا اکاؤنٹ کامیابی سے تصدیق ہو گیا ہے۔",
+          "button": "واپس لاگ ان پر"
+        }
+      }
+    },
+    "settings": {
+      "language": "زبان",
+      "fontSize": "فونٹ سائز",
+      "darkMode": "ڈارک موڈ",
+      "deleteAccount": "میرا اکاؤنٹ حذف کریں",
+      "logOut": "لاگ آؤٹ",
+      "languageOptions": {
+        "english": "انگریزی",
+        "german": "جرمن",
+        "french": "فرانسیسی",
+        "hindi": "ہندی",
+        "japanese": "جاپانی",
+        "urdu": "اردو"
+      }
+    },
+    "addShipment": {
+      "title": "نئی شپمنٹ شامل کریں",
+      "generalDetail": "عام تفصیلات",
+      "shipmentDetail": "شپمنٹ کی تفصیل",
+      "pickupDetails": "پک اپ کی تفصیل",
+      "completionDetails": "مکمل کرنے کی تفصیل",
+      "next": "اگلا"
+    },
+    "completion": {
+      "email": "ای میل آئی ڈی",
+      "contactNumber": "رابطہ نمبر",
+      "addressID": "پتہ آئی ڈی",
+      "startTime": "آغاز وقت*",
+      "endTime": "اختتامی وقت*",
+      "branchName": "برانچ کا نام*",
+      "deliveryTimezone": "ڈیلیوری ٹائم زون",
+      "deliveryNotes": "ڈیلیوری نوٹس",
+      "whatsappOptIn": "واٹس ایپ آپٹ ان"
+    },
+    "general": {
+      "shipmentType": "شپمنٹ کی قسم*",
+      "returnShipment": "واپسی شپمنٹ",
+      "yes": "ہاں",
+      "no": "نہیں"
+    },
+    "home": {
+      "greeting": "ہیلو،",
+      "shipmentQuestion": "آج آپ کہاں شپمنٹ بھیجنا چاہتے ہیں؟",
+      "searchPlaceholder": "یہاں تلاش کریں..."
+    },
+    "pickupDetails": {
+      "customerID": "کسٹمر آئی ڈی*",
+      "name": "نام*",
+      "email": "ای میل آئی ڈی",
+      "contactNumber": "رابطہ نمبر",
+      "addressID": "پتہ آئی ڈی",
+      "startTime": "آغاز وقت*",
+      "endTime": "اختتامی وقت*",
+      "serviceTime": "سروس وقت (منٹ)",
+      "branchName": "برانچ کا نام*"
+    },
+    "shipmentDetail": {
+      "shipmentNumber": "شپمنٹ نمبر",
+      "shipmentDateTimezone": "شپمنٹ کی تاریخ اور ٹائم زون",
+      "shipmentDate": "شپمنٹ کی تاریخ*",
+      "priority": "ترجیح",
+      "parentShipmentNumber": "اصل شپمنٹ نمبر",
+      "skillSet": "مہارت کا مجموعہ",
+      "deliveryAssociates": "ڈیلیوری کے ساتھی",
+      "partialDelivery": "جزوی ڈیلیوری کی اجازت ہے",
+      "salesReturn": "سیلز ریٹرن کی اجازت ہے",
+      "shipmentCancellation": "شپمنٹ منسوخی کی اجازت ہے",
+      "serviceTime": "سروس وقت (منٹوں میں)",
+      "autoAllocateProfileName": "آٹو الاٹ پروفائل کا نام",
+      "serviceType": "سروس کی قسم"
+    },
+    "saveScreen": {
+      "heading": "محفوظ شدہ شپمنٹس",
+      "emptyMessage": "آپ کی محفوظ شدہ شپمنٹ خالی ہے"
     }
-  },
-  "multilingual": {
-    "continue": "جاری رکھیں",
-    "all_languages": "تمام زبانیں"
-  }}}
+  }
+}

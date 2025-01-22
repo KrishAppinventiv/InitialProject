@@ -265,14 +265,7 @@ export default StyleSheet.create({
     fontSize: vh(16),
     textAlign: 'center',
   },
-  border: {
-    borderColor: '#ccc',
-    borderWidth: 1,
-    borderRadius: vh(20),
-    paddingHorizontal: vh(6),
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+ 
   lightMode:{
     backgroundColor:colors.white
   },
@@ -288,5 +281,22 @@ export default StyleSheet.create({
     borderColor: '#ccc',
     color: '#fff',
   },
+
+  resetField: {
+    paddingHorizontal: vh(8),
+    paddingVertical:vh(7),
+    // marginVertical: 8,
+    borderRadius: vh(28),
+    borderWidth: 2,
+    borderColor: '#ccc',
+    color: '#fff',
+  },
+  white:{
+    color:'#ffffff'
+  },
+  black:{
+  color:'#000'
+  },
+  
   
 });

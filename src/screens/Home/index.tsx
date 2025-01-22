@@ -11,7 +11,7 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import React, {useContext, useEffect, useState} from 'react';
-import {ScreenNames} from '../../navigator/screenNames';
+
 import {useNavigation} from '@react-navigation/native';
 import {Images} from '../../assets';
 import {MEAL_FILTERS, NEW_RECIPE} from '../../components/data';
@@ -23,18 +23,15 @@ import styles from './styles';
 
 import {colors} from '../../theme';
 import { ThemeContext } from '../../utils/theme-context';
+import { t } from 'i18next';
+import { FontSizeContext } from '../../utils/Font/FontSizeContext';
+import { ScreenNames } from '../../utils/screenNames';
 
-type Recipe = {
-  recipe: {
-    label: string;
-    image: string | null;
-    [key: string]: any;
-  };
-};
+
 
 const Home = () => {
-  const navigation: any = useNavigation();
-
+  
+  const { fontSizes } = useContext(FontSizeContext);
   const [name, setName] = useState('Krishna Gupta');
   const { isDarkMode, toggleTheme } = useContext(ThemeContext);
 
@@ -47,14 +44,16 @@ const Home = () => {
 
         <View style={styles.transparentView}>
           <View style={styles.margin}>
-            <Text style={styles.logo}>Hello, {name.split(' ').shift()}</Text>
-            <Text style={styles.cookText}>Where you want to shipment today?</Text>
+            <Text style={[styles.logo, { fontSize: fontSizes.title }]}>{t('screens.home.greeting')} {name.split(' ').shift()}</Text>
+            <Text style={[styles.cookText, { fontSize: fontSizes.subtitle }]}>{t('screens.home.shipmentQuestion')}</Text>
             <TouchableOpacity
               activeOpacity={0.8}
               style={styles.searchBox}
               >
               <Ionicons name={'search'} size={28} color={'#ccc'} />
-              <Text style={styles.placeholder}>Please search here...</Text>
+              <Text style={[styles.placeholder, { fontSize: fontSizes.body }]}>
+                {t("screens.home.searchPlaceholder")}
+              </Text>
             </TouchableOpacity>
           </View>
          

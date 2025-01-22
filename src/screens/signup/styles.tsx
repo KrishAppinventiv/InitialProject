@@ -69,13 +69,12 @@ export default StyleSheet.create({
         borderColor: '#ccc',
         borderWidth: 1,
         backgroundColor: 'white',
-        marginBottom: vh(18),
+        marginBottom: vh(18)
        
       },
     
       inputContainer1: {
         padding: 10,
-       
         borderRadius: 7,
         borderColor: '#ccc',
         borderWidth: 1,
@@ -241,11 +240,17 @@ export default StyleSheet.create({
       inputField: {
         paddingHorizontal: vh(8),
         paddingVertical:vh(7),
-        marginVertical: 8,
+        marginVertical: vh(6),
         borderRadius: 8,
         borderWidth: 2,
         borderColor: '#ccc',
         color: '#fff',
         marginTop:vh(10)
       },
+      white:{
+        color:'#ffffff'
+      },
+      black:{
+      color:'#000'
+      }
 })

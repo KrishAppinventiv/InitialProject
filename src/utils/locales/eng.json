@@ -72,78 +72,80 @@
       }
     },
 
-    "studio": {
-    "helpMessage": "Help us to know you more",
-    "instruction": "Please indicate whether you are employed by a studio, production company, or are a freelance worker.",
-    "selectStudioMessage": "Please select the studio you work for",
-    "searchPlaceholder": "Search studio...",
-    "studios": {
-      "abc": "ABC",
-      "amazon": "Amazon Studios",
-      "apple": "Apple Studios",
-      "bbc": "BBC",
-      "cbs": "CBS",
-      "cnn": "CNN",
-      "disney": "Disney",
-      "fox": "Fox News",
-      "godaddy": "GoDaddy Studios"
-    },
-    "category": {
-      "studio": "Studio",
-      "productionCo": "Production Co.",
-      "freelance": "Freelance"
-    }
-  },
-
-  "department": {
-    "helpMessage": "Help us to know you more",
-    "instruction": "Please select your department",
-    "searchPlaceholder": "Search department...",
-    "departments": {
-      "casting": "Casting",
-      "editing": "Editing",
-      "makeup": "Makeup",
-      "production": "Production",
-      "location": "Location",
-      "artProps": "Art/Props",
-      "visualEffects": "Visual Effects",
-      "musicAndScore": "Music and Score",
-      "colorGrading": "Color Grading",
-      "marketing": "Marketing",
-      "legalFinance": "Legal and Finance",
-      "animalTrainers": "Animal Trainers",
-      "stuntCoordinator": "Stunt Coordinator",
-      "healthSafety": "Health & Safety",
-      "sustainability": "Sustainability"
-    }},
-    "position": {
-      "helpMessage": "Help us to know you more",
-      "instruction": "Please select your positions",
-      "searchPlaceholder": "Search positions...",
-      "positions": {
-        "manager": "Manager",
-        "screenwriter": "Screenwriter",
-        "directorPhotography": "Director of Photography",
-        "productionManager": "Production Manager",
-        "productionCoordinator": "Production Coordinator",
-        "productionAssistant": "Production Assistant",
-        "locationManager": "Location Manager",
-        "productionDesigner": "Production Designer",
-        "artDirector": "Art Director",
-        "setDesigner": "Set Designer"
+    "settings": {
+      "language": "Language",
+      "fontSize": "Font Size",
+      "darkMode": "Dark Mode",
+      "deleteAccount": "Delete My Account",
+      "logOut": "Log Out",
+      "languageOptions": {
+        "english": "English",
+        "german": "German",
+        "french": "French",
+        "hindi": "Hindi",
+        "japanese": "Japanese",
+        "urdu": "Urdu"
       }
     },
-    "profile": {
-    "header": "Profile Setup",
-    "instruction": "Please add a profile photo to help your production team recognize you in the field.",
-    "photoPrompt": "Profile Photo",
-    "skip": "Skip",
-    "options": {
-      "uploadFromGallery": "Upload from Gallery",
-      "useCamera": "Use Camera"
-    }},
-  "buttons": {
-    "continue": "Continue"
+    "addShipment": {
+    "title": "Add Shipment",
+    "generalDetail": "General Detail",
+    "shipmentDetail": "Shipment Detail",
+    "pickupDetails": "Pickup Details",
+    "completionDetails": "Completion Details",
+    "next": "Next"
+  },
+  "completion": {
+    "email": "Email ID",
+    "contactNumber": "Contact Number",
+    "addressID": "Address ID",
+    "startTime": "Start Time*",
+    "endTime": "End Time*",
+    "branchName": "Branch Name*",
+    "deliveryTimezone": "Delivery Timezone",
+    "deliveryNotes": "Delivery Notes",
+    "whatsappOptIn": "WhatsApp Opt In"
+  },
+  "general": {
+    "shipmentType": "Shipment Type*",
+    "returnShipment": "Return Shipment",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "home": {
+    "greeting": "Hello,",
+    "shipmentQuestion": "Where do you want to ship today?",
+    "searchPlaceholder": "Please search here..."
+  },
+  "pickupDetails": {
+    "customerID": "Customer ID*",
+    "name": "Name*",
+    "email": "Email ID",
+    "contactNumber": "Contact Number",
+    "addressID": "Address ID",
+    "startTime": "Start Time*",
+    "endTime": "End Time*",
+    "serviceTime": "Service Time (mins)",
+    "branchName": "Branch Name*"
+  },
+  "shipmentDetail": {
+    "shipmentNumber": "Shipment Number",
+    "shipmentDateTimezone": "Shipment Date Timezone",
+    "shipmentDate": "Shipment Date*",
+    "priority": "Priority",
+    "parentShipmentNumber": "Parent Shipment Number",
+    "skillSet": "Skill Set",
+    "deliveryAssociates": "Delivery Associates",
+    "partialDelivery": "Partial Delivery Allowed",
+    "salesReturn": "Sales Return Allowed",
+    "shipmentCancellation": "Shipment Cancellation Allowed",
+    "serviceTime": "Service Time (in minutes)",
+    "autoAllocateProfileName": "AutoAllocate Profile Name",
+    "serviceType": "Service Type"
+  },
+  "saveScreen": {
+    "heading": "Saved Shipments",
+    "emptyMessage": "Your Saved Shipment is Empty"
   }
     }
   }

@@ -12,6 +12,9 @@ export type RootStackParamList = {
     [ScreenNames.Profile]:undefined;
     [ScreenNames.Save]:undefined;
     [ScreenNames.Search]:undefined;
+    [ScreenNames.Setting]:undefined;
     [ScreenNames.Splash]:undefined;
+    [ScreenNames.Login]:undefined;
     [ScreenNames.Tutorial]:undefined;
+    [ScreenNames.Otp]:undefined;
   };

@@ -4,25 +4,44 @@ import {vh} from '../../theme/dimensions';
 import CheckBox from 'react-native-check-box';
 import {colors} from '../../theme';
 import { ThemeContext } from '../../utils/theme-context';
+import { t } from 'i18next';
+import { useTranslation } from 'react-i18next';
+import styles from './styles';
 
 const GeneralDetail = () => {
-  const itemsArray = ['Pickup Leg', 'Delivery Leg', 'Point to Point'];
+
   const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
+ 
+  const { t } = useTranslation();
+  const [selectedOption, setSelectedOption] = useState('');
+
+ const handleCheckboxToggle = (index: number): void => {
+  setCheckedItems(prevCheckedItems => {
+    const updatedCheckedItems = [...prevCheckedItems];
+    updatedCheckedItems[index] = !updatedCheckedItems[index];
+    return updatedCheckedItems;
+  });
+};
+
+const itemsArray: ListItem[] = [
+    { id: 1, text: 'Pickup Leg' },
+    { id: 2, text: 'Delivery Leg' },
+    { id: 3, text: 'Point to Point' },
+  ];
+
   const [checkedItems, setCheckedItems] = useState(
     new Array(itemsArray.length).fill(false)
   );
+  
 
-  const [selectedOption, setSelectedOption] = useState('');
-
-  const handleCheckboxToggle = index => {
-    const updatedCheckedItems = [...checkedItems];
-    updatedCheckedItems[index] = !updatedCheckedItems[index];
-    setCheckedItems(updatedCheckedItems);
-  };
+interface ListItem {
+    id: number;
+    text: string;
+  }
 
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;    
 
-  const renderItem = ({item, index}:any) => (
+  const renderItem = ({ item, index }: { item: ListItem; index: number }) => (
     <TouchableOpacity
       activeOpacity={0.7}
       onPress={() => handleCheckboxToggle(index)}>
@@ -42,16 +61,16 @@ const GeneralDetail = () => {
 
         <Text
           style={[styles.leftText, checkedItems[index] && styles.checkedText,{color:isDarkMode?"#ffffff":"#000"}]}>
-          {item}
+          {item.text}
         </Text>
       </View>
     </TouchableOpacity>
   );
   return (
     <View style={[styles.container,themeStyles]}>
-      <Text style={[styles.head,{color:isDarkMode?"#ffffff":"#000"}]}>shipment1 Type*</Text>
+      <Text style={[styles.head,{color:isDarkMode?"#ffffff":"#000"}]}>{t('screens.general.shipmentType')}</Text>
       <View>
-        <FlatList
+        <FlatList 
           data={itemsArray}
           renderItem={renderItem}
           keyExtractor={(item, index) => index.toString()}
@@ -59,7 +78,7 @@ const GeneralDetail = () => {
           contentContainerStyle={{paddingBottom: vh(10)}}
         />
       </View>
-      <Text style={[styles.head,,{color:isDarkMode?"#ffffff":"#000"}]}>Return shipment1</Text>
+      <Text style={[styles.head,,{color:isDarkMode?"#ffffff":"#000"}]}>{t('screens.general.returnShipment')}</Text>
       <View>
         <View style={styles.radioButtonContainer}>
           <TouchableOpacity  onPress={() => setSelectedOption('Yes')}  style={styles.radioButton}>
@@ -67,7 +86,7 @@ const GeneralDetail = () => {
             
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {}}>
-            <Text style={[styles.leftText,{color:isDarkMode?"#ffffff":"#000"}]}>Yes</Text>
+            <Text style={[styles.leftText,{color:isDarkMode?"#ffffff":"#000"}]}> {t('screens.general.yes')}</Text>
           </TouchableOpacity>
         </View> 
         <View style={styles.radioButtonContainer}>
@@ -76,7 +95,7 @@ const GeneralDetail = () => {
             
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {}}>
-            <Text style={[styles.leftText,{color:isDarkMode?"#ffffff":"#000"}]}>No</Text>
+            <Text style={[styles.leftText,{color:isDarkMode?"#ffffff":"#000"}]}> {t('screens.general.no')}</Text>
           </TouchableOpacity>
         </View> 
       </View>
@@ -85,87 +104,3 @@ const GeneralDetail = () => {
 };
 
 export default GeneralDetail;
-
-const styles = StyleSheet.create({
-  head: {
-    color: '#ffffff',
-    fontSize: vh(15),
-    fontWeight: '500'
-  },
-  container: {
-   
-    flex: 1,
-    padding: vh(10)
-  },
-  checkbox: {
-    padding: 10
-  },
-  leftText: {
-    marginLeft: 10,
-    fontSize: vh(13),
-    color: '#ffffff',
-    fontWeight: '500',
-  },
-  checkedText: {
-    fontWeight: '600',
-    color: colors.main,
-  },
-  checkedBox: {
-    width: 24,
-    height: 24,
-    backgroundColor: colors.main,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 5,
-  },
-  tick: {
-    color: '#fff',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-  uncheckedBox: {
-    width: 24,
-    height: 24,
-    borderWidth: 2,
-    borderColor: '#A8A8A8',
-    backgroundColor: '#fff',
-    borderRadius: 5,
-  },
-  item: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginVertical: vh(2),
-  },
-  radioButtonContainer: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginRight: 45,
-    marginTop:vh(10)
-  },
-  radioButton: {
-    height: 20,
-    width: 20,
-    // backgroundColor:colors.main,
-    borderRadius: 10,
-    borderWidth: 2,
-    borderColor: colors.main,
-    alignItems: "center",
-    justifyContent: "center"
-  },
-  radioButtonIcon: {
-    height: 10,
-    width: 10,
-    borderRadius: 7,
-    backgroundColor: colors.main
-  },
-
-  lightMode:{
-    backgroundColor:colors.white
-  },
-  darkMode:{
-    backgroundColor: '#2d3040',
-  },
-  
-  
-
-});

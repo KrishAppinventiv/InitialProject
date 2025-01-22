@@ -19,4 +19,81 @@
     "multilingual": {
       "continue": "जारी रखें",
       "all_languages": "सभी भाषाएँ"
-    }}}
+    },
+    "settings": {
+    "language": "भाषा",
+    "fontSize": "फ़ॉन्ट आकार",
+    "darkMode": "डार्क मोड",
+    "deleteAccount": "मेरा खाता हटाएं",
+    "logOut": "लॉग आउट",
+    "languageOptions": {
+      "english": "अंग्रेज़ी",
+      "german": "जर्मन",
+      "french": "फ्रेंच",
+      "hindi": "हिंदी",
+      "japanese": "जापानी",
+      "urdu": "उर्दू"
+    }
+  },
+  "addShipment": {
+    "title": "शिपमेंट जोड़ें",
+    "generalDetail": "सामान्य विवरण",
+    "shipmentDetail": "शिपमेंट विवरण",
+    "pickupDetails": "पिकअप विवरण",
+    "completionDetails": "समाप्ति विवरण",
+    "next": "आगे"
+  },
+  "completion": {
+    "email": "ईमेल आईडी",
+    "contactNumber": "संपर्क नंबर",
+    "addressID": "पता आईडी",
+    "startTime": "प्रारंभ समय*",
+    "endTime": "समाप्ति समय*",
+    "branchName": "शाखा नाम*",
+    "deliveryTimezone": "वितरण समय क्षेत्र",
+    "deliveryNotes": "डिलीवरी नोट्स",
+    "whatsappOptIn": "व्हाट्सएप ऑप्ट इन"
+  },
+  "general": {
+    "shipmentType": "शिपमेंट प्रकार*",
+    "returnShipment": "रिटर्न शिपमेंट",
+    "yes": "हाँ",
+    "no": "नहीं"
+  },
+  "home": {
+    "greeting": "नमस्ते,",
+    "shipmentQuestion": "आज आप कहाँ शिपमेंट करना चाहते हैं?",
+    "searchPlaceholder": "कृपया यहाँ खोजें..."
+  },
+  "pickupDetails": {
+    "customerID": "ग्राहक आईडी*",
+    "name": "नाम*",
+    "email": "ईमेल आईडी",
+    "contactNumber": "संपर्क नंबर",
+    "addressID": "पता आईडी",
+    "startTime": "प्रारंभ समय*",
+    "endTime": "समाप्ति समय*",
+    "serviceTime": "सेवा समय (मिनट)",
+    "branchName": "शाखा का नाम*"
+  },
+  "shipmentDetail": {
+    "shipmentNumber": "शिपमेंट नंबर",
+    "shipmentDateTimezone": "शिपमेंट दिनांक समय क्षेत्र",
+    "shipmentDate": "शिपमेंट दिनांक*",
+    "priority": "प्राथमिकता",
+    "parentShipmentNumber": "मूल शिपमेंट नंबर",
+    "skillSet": "कौशल सेट",
+    "deliveryAssociates": "डिलीवरी सहयोगी",
+    "partialDelivery": "आंशिक डिलीवरी अनुमति है",
+    "salesReturn": "बिक्री वापसी अनुमति है",
+    "shipmentCancellation": "शिपमेंट रद्द करने की अनुमति है",
+    "serviceTime": "सेवा समय (मिनटों में)",
+    "autoAllocateProfileName": "स्वतः आवंटन प्रोफ़ाइल नाम",
+    "serviceType": "सेवा प्रकार"
+  },
+  "saveScreen": {
+    "heading": "सहेजे गए शिपमेंट",
+    "emptyMessage": "आपका सहेजा गया शिपमेंट खाली है"
+  }
+    
+    }}

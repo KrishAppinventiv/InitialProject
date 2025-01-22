@@ -16,7 +16,85 @@
         "signUp": "S'inscrire"
       }
     },
+    
     "multilingual": {
       "continue": "Continuer",
       "all_languages": "Toutes les langues"
-    }}}
+    },
+    "settings": {
+      "language": "Langue",
+      "fontSize": "Taille de la police",
+      "darkMode": "Mode sombre",
+      "deleteAccount": "Supprimer mon compte",
+      "logOut": "Se déconnecter",
+      "languageOptions": {
+        "english": "Anglais",
+        "german": "Allemand",
+        "french": "Français",
+        "hindi": "Hindi",
+        "japanese": "Japonais",
+        "urdu": "Ourdou"
+      }},
+      "addShipment": {
+        "title": "Ajouter un envoi",
+        "generalDetail": "Détail général",
+        "shipmentDetail": "Détail de l'envoi",
+        "pickupDetails": "Détails de la collecte",
+        "completionDetails": "Détails de la finalisation",
+        "next": "Suivant"
+      },
+      "completion": {
+        "email": "Identifiant e-mail",
+        "contactNumber": "Numéro de contact",
+        "addressID": "Identifiant d'adresse",
+        "startTime": "Heure de début*",
+        "endTime": "Heure de fin*",
+        "branchName": "Nom de la branche*",
+        "deliveryTimezone": "Fuseau horaire de livraison",
+        "deliveryNotes": "Notes de livraison",
+        "whatsappOptIn": "Opt-in WhatsApp"
+      },
+      "general": {
+    "shipmentType": "Type d'envoi*",
+    "returnShipment": "Retour d'envoi",
+    "yes": "Oui",
+    "no": "Non"
+  },
+  "home": {
+    "greeting": "Bonjour,",
+    "shipmentQuestion": "Où voulez-vous expédier aujourd'hui?",
+    "searchPlaceholder": "Veuillez rechercher ici..."
+  },
+  
+  "pickupDetails": {
+    "customerID": "Identifiant client*",
+    "name": "Nom*",
+    "email": "Identifiant e-mail",
+    "contactNumber": "Numéro de contact",
+    "addressID": "Identifiant d'adresse",
+    "startTime": "Heure de début*",
+    "endTime": "Heure de fin*",
+    "serviceTime": "Temps de service (minutes)",
+    "branchName": "Nom de la succursale*"
+  },
+  "shipmentDetail": {
+    "shipmentNumber": "Numéro d'expédition",
+    "shipmentDateTimezone": "Fuseau horaire de la date d'expédition",
+    "shipmentDate": "Date d'expédition*",
+    "priority": "Priorité",
+    "parentShipmentNumber": "Numéro de l'expédition parent",
+    "skillSet": "Ensemble de compétences",
+    "deliveryAssociates": "Associés de livraison",
+    "partialDelivery": "Livraison partielle autorisée",
+    "salesReturn": "Retour des ventes autorisé",
+    "shipmentCancellation": "Annulation de l'expédition autorisée",
+    "serviceTime": "Temps de service (en minutes)",
+    "autoAllocateProfileName": "Nom du profil AutoAllocate",
+    "serviceType": "Type de service"
+  },
+  "saveScreen": {
+    "heading": "Expéditions enregistrées",
+    "emptyMessage": "Votre expédition enregistrée est vide"
+  }
+  
+    }}

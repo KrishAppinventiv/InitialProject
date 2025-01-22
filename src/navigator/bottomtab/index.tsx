@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {ScreenNames} from '../screenNames';
+
 
 import Save from '../../screens/save';
 import Notification from '../../screens/notification';
@@ -15,6 +15,7 @@ import { colors } from '../../theme';
 import Home from '../../screens/Home';
 import { vh } from '../../theme/dimensions';
 import { ThemeContext } from '../../utils/theme-context';
+import { ScreenNames } from '../../utils/screenNames';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -67,7 +68,7 @@ const BottomTabNavigator = () => {
           tabBarIcon: ({focused}) => (
             
             <View style={styles.addIcon}>
-             <Ionicons name={'add-circle'} size={70} color={focused?colors.main:'#ccc'}  style={{height:vh(70),width:vh(70)}}/>
+             <Ionicons name={'add-circle'} size={60} color={focused?colors.main:'#ccc'}  style={{height:vh(63),width:vh(63),marginBottom:vh(8)}}/>
             </View>
           
           ),

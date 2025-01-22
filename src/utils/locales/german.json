@@ -19,4 +19,81 @@
     "multilingual": {
       "continue": "Fortfahren",
        "all_languages": "Alle Sprachen"
-    }}}
+    },
+    "settings": {
+    "language": "Sprache",
+    "fontSize": "Schriftgröße",
+    "darkMode": "Dunkler Modus",
+    "deleteAccount": "Mein Konto löschen",
+    "logOut": "Abmelden",
+    "languageOptions": {
+      "english": "Englisch",
+      "german": "Deutsch",
+      "french": "Französisch",
+      "hindi": "Hindi",
+      "japanese": "Japanisch",
+      "urdu": "Urdu"
+    }
+  },
+  "addShipment": {
+    "title": "Sendung hinzufügen",
+    "generalDetail": "Allgemeine Details",
+    "shipmentDetail": "Sendungsdetails",
+    "pickupDetails": "Abholdetails",
+    "completionDetails": "Abschlussdetails",
+    "next": "Weiter"
+  },
+  "completion": {
+    "email": "E-Mail-ID",
+    "contactNumber": "Kontakt Nummer",
+    "addressID": "Adress-ID",
+    "startTime": "Startzeit*",
+    "endTime": "Endzeit*",
+    "branchName": "Zweigstellenname*",
+    "deliveryTimezone": "Lieferzeitzone",
+    "deliveryNotes": "Lieferhinweise",
+    "whatsappOptIn": "WhatsApp-Opt-in"
+  },
+  "general": {
+    "shipmentType": "Versandart*",
+    "returnShipment": "Rücksendung",
+    "yes": "Ja",
+    "no": "Nein"
+  },
+  "home": {
+    "greeting": "Hallo,",
+    "shipmentQuestion": "Wohin möchten Sie heute versenden?",
+    "searchPlaceholder": "Bitte hier suchen..."
+  },
+  "pickupDetails": {
+    "customerID": "Kundennummer*",
+    "name": "Name*",
+    "email": "E-Mail-ID",
+    "contactNumber": "Telefonnummer",
+    "addressID": "Adress-ID",
+    "startTime": "Startzeit*",
+    "endTime": "Endzeit*",
+    "serviceTime": "Servicezeit (Minuten)",
+    "branchName": "Filialname*"
+  },
+  "shipmentDetail": {
+    "shipmentNumber": "Sendungsnummer",
+    "shipmentDateTimezone": "Versanddatum Zeitzone",
+    "shipmentDate": "Versanddatum*",
+    "priority": "Priorität",
+    "parentShipmentNumber": "Übergeordnete Sendungsnummer",
+    "skillSet": "Fähigkeitssatz",
+    "deliveryAssociates": "Lieferpartner",
+    "partialDelivery": "Teillieferung erlaubt",
+    "salesReturn": "Rücksendung erlaubt",
+    "shipmentCancellation": "Sendungsstornierung erlaubt",
+    "serviceTime": "Servicezeit (in Minuten)",
+    "autoAllocateProfileName": "AutoAllocate Profilname",
+    "serviceType": "Servicetyp"
+  },
+  "saveScreen": {
+    "heading": "Gespeicherte Sendungen",
+    "emptyMessage": "Ihre gespeicherte Sendung ist leer"
+  }
+    
+    }}

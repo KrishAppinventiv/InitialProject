@@ -26,7 +26,7 @@ export default StyleSheet.create({
   },
   searchBox: {
     
-    height: vh(60),
+    paddingVertical:vh(10),
 
     backgroundColor: 'white',
     borderRadius: 8,

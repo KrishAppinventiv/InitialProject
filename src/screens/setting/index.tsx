@@ -1,5 +1,5 @@
 import Slider from '@react-native-community/slider';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Switch, I18nManager, Alert} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import { colors } from '../../theme';
@@ -7,100 +7,117 @@ import { vh } from '../../theme/dimensions';
 import Button from '../../components/Button';
 import { ThemeContext } from '../../utils/theme-context';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import i18n from '../../utils/i18n';
-import { ScreenNames } from '../../navigator/screenNames';
+import  i18n, { changeLanguage } from '../../utils/i18n';
+import { ScreenNames } from '../../utils/screenNames';
 import { useNavigation } from '@react-navigation/native';
-
+import { useTranslation } from 'react-i18next';
+import styles from './styles';
+import { FontSizeContext } from '../../utils/Font/FontSizeContext';
+import CustomModal from '../../components/CustomModal';
+import { RootStackParamList } from '../../utils/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+type SignupScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.Setting
+>;
 const Setting = () => {
+    const { t } = useTranslation();
   const [darkMode, setDarkMode] = useState(false);
-  const [fontSize, setFontSize] = useState(16);
-  
+  const { fontSize, setFontSize, fontSizes } = useContext(FontSizeContext);
+  const [modalVisible, setModalVisible] = useState(false);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
   const [selectedLanguage, setSelectedLanguage] = useState<string>(
     i18n.language,
   );
-  const navigation=useNavigation();
+  const navigation = useNavigation<SignupScreenNavigationProp>();
 
-  const selectLanguage = async langCode => {
+  const handleLogout = async () => {
+    setModalVisible(false);
+    await AsyncStorage.removeItem('isLoggedIn');
+    navigation.reset({
+      index: 0,
+      routes: [{ name: ScreenNames.Signin }],
+    });
+  };
+  useEffect(() => {
+    
+    const loadLanguage = async () => {
+      const savedLang = await AsyncStorage.getItem('selectedLanguage');
+      if (savedLang) {
+        setSelectedLanguage(savedLang);
+        i18n.changeLanguage(savedLang);
+      }
+    };
+    loadLanguage();
+  }, []);
+
+
+  const selectLanguage = async (langCode: string): Promise<void> => {
     try {
       await AsyncStorage.setItem('selectedLanguage', langCode);
-      console.log('langcode',langCode)
       i18n.changeLanguage(langCode);
+      
       if (langCode === 'ur') {
         I18nManager.forceRTL(true);
       } else {
         I18nManager.forceRTL(false);
       }
+
       setSelectedLanguage(langCode);
+      console.log("language select sucessfully", langCode)
     } catch (error) {
       console.error('Error saving language to AsyncStorage', error);
     }
   };
+
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
       <View style={styles.settingItem}>
-        <Text style={styles.label}>Language</Text>
+      <Text style={[styles.label, { fontSize: fontSizes.title }]}>{t("screens.settings.language")}</Text>
         <Picker
           selectedValue={selectedLanguage}
           onValueChange={(itemValue) => selectLanguage(itemValue)}
           style={styles.picker}
         >
-          <Picker.Item label="English" value="English"  />
-          <Picker.Item label="Spanish" value="Spanish" />
-          <Picker.Item label="French" value="French" />
+         <Picker.Item label={t("screens.settings.languageOptions.english")} value="en" />
+          <Picker.Item label={t("screens.settings.languageOptions.german")} value="de" />
+          <Picker.Item label={t("screens.settings.languageOptions.french")} value="fr" />
+          <Picker.Item label={t("screens.settings.languageOptions.hindi")} value="hi" />
+          <Picker.Item label={t("screens.settings.languageOptions.japanese")} value="ja" />
+          <Picker.Item label={t("screens.settings.languageOptions.urdu")} value="ur" />
         </Picker>
       </View>
       <View style={styles.settingItem}>
-        <Text style={styles.label}>Font Size</Text>
+      <Text style={[styles.label, { fontSize: fontSizes.title }]}>{t("screens.settings.fontSize")}</Text>
         <Slider
           minimumValue={12}
           maximumValue={24}
           value={fontSize}
-          onValueChange={(value) => setFontSize(value)}
+          onValueChange={(value) => setFontSize(Math.round(value))}
         />
       </View>
       <View style={styles.settingItem}>
-        <Text style={styles.label}>Dark Mode</Text>
+      <Text style={[styles.label, { fontSize: fontSizes.title }]}>{t("screens.settings.darkMode")}</Text>
         <Switch value={isDarkMode} onValueChange={toggleTheme} />
       </View>
-      <Button text="Delete My Account"  onPress={() => Alert.alert('Account Deleted')}  style={styles.button} disabled={false}/>
-      <Button text="Log Out"  onPress={() => navigation.navigate(ScreenNames.Signin)}  style={styles.button} disabled={false}/> 
+      <Button text={t("screens.settings.deleteAccount")}  onPress={() => Alert.alert('Account Deleted')}  style={styles.button} disabled={false}/>
+      <Button  text={t("screens.settings.logOut")} onPress={() => setModalVisible(true)}  style={styles.button} disabled={false}/> 
+
+<CustomModal modalVisible={modalVisible} setModalVisible={setModalVisible}>
+        <View style={styles.modalContent}>
+          <Text style={styles.modalText}>Are you sure you want to logout?</Text>
+          <View style={styles.modalButtons}>
+           
+            <Button text="OK" onPress={handleLogout} style={styles.okButton} disabled={false}/>
+            <Button text="Cancel" onPress={() => setModalVisible(false)} style={styles.cancelButton} disabled={false}/>  
+          </View>
+        </View>
+      </CustomModal>
     </View>
   );
 };
 
 export default Setting;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: '#fff',
-  },
-  darkContainer: {
-    backgroundColor:'#2d3040'
-  },
-  settingItem: {
-    marginBottom: 20,
-    shadowColor:'#ccc',
-    padding:vh(10),
-    elevation:vh(5),
-    borderWidth:2,
-    backgroundColor:colors.main,
-    borderColor:'#ccc',
-    borderRadius:vh(20)
-  },
-  label: {
-    fontSize: vh(18),
-    marginBottom: 10,
-    fontWeight:'600'
-  },
-  picker: {
-    height: 50,
-    width: 200,
-  },
-  button:{
-    backgroundColor:colors.main,
-    borderRadius:vh(20)
-  }
-});
+
+

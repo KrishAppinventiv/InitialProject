@@ -9,9 +9,9 @@ import {
   Text,
 } from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {vh} from '../../theme/dimensions';
-import {Images} from '../../assets';
+
 import {ThemeContext} from '../../utils/theme-context';
+import { vh } from '../../theme/dimensions';
 
 interface InputFieldProps extends TextInputProps {
   style?: object;
@@ -41,7 +41,7 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
     textStyle,
     placeholderTextStyle,
   } = props;
-  const {isDarkMode, toggleTheme} = useContext(ThemeContext);
+  const {isDarkMode} = useContext(ThemeContext);
   const [isFocused, setIsFocused] = useState(false);
 
   const handleFocus = () => setIsFocused(true);
@@ -49,11 +49,11 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
 
   return (
     <View style={[styles.container, style]}>
-      {iconName && <MaterialIcons name={iconName} size={20} color={'#ccc'} />}
+      {iconName && <MaterialIcons name={iconName} size={20} color={'#ccc'}  style={styles.iconLeft} />}
 
       <Text
         style={[
-          styles.floatingLabel,
+          styles.floatingLabel,iconName && {marginLeft:vh(18)},
           isDarkMode && {backgroundColor: '#2d3040'},
           placeholderTextStyle,
           isFocused || value
@@ -65,7 +65,7 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
 
       <TextInput
         ref={ref}
-        style={[styles.input, textStyle]}
+        style={[styles.input, textStyle,iconName && {marginLeft:vh(18)}]}
         value={value}
         onFocus={handleFocus}
         onBlur={handleBlur}
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 8,
+   
   },
   input: {
     flex: 1,
@@ -113,6 +114,7 @@ const styles = StyleSheet.create({
   },
   floatingLabel: {
     position: 'absolute',
+    alignSelf:'center',
     left: 10,
     fontSize: 16,
     color: '#ccc',
@@ -121,7 +123,7 @@ const styles = StyleSheet.create({
     zIndex: 1,
   },
   floatingLabelInactive: {
-    top: 15,
+    top: 17,
     fontSize: 16,
   },
   floatingLabelActive: {
@@ -131,9 +133,10 @@ const styles = StyleSheet.create({
   },
   iconLeft: {
     position: 'absolute',
-    left: 10, 
-    zIndex: 2,
+    left:vh(7),
+   
   },
+  
 });
 
 export default InputField;

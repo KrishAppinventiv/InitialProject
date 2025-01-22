@@ -1,4 +1,4 @@
-import {ScreenNames} from './screenNames';
+
 
 import SplashScreen from '../screens/splashScreen';
 
@@ -16,6 +16,7 @@ import VerifyOtp from '../screens/verifyOtp';
 import Home from '../screens/Home';
 import Login from '../screens/login';
 import BottomTabNavigator from './bottomtab';
+import { ScreenNames } from '../utils/screenNames';
 
 const Stack: any = createNativeStackNavigator();
 

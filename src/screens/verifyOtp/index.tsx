@@ -13,7 +13,7 @@ import {
 import React, {useState, useRef, useEffect, useContext} from 'react';
 import {colors} from '../../theme';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import {ScreenNames} from '../../navigator/screenNames';
+import {ScreenNames} from '../../utils/screenNames';
 import {useNavigation} from '@react-navigation/native';
 import Button from '../../components/Button';
 import styles from './styles';
@@ -22,7 +22,7 @@ import CustomModal from '../../components/CustomModal';
 import {vh} from '../../utils/dimension';
 import Toast from 'react-native-toast-message';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../navigator/types';
+import {RootStackParamList} from '../../utils/types';
 import { showToast } from '../../components/CustomToast';
 import { ThemeContext } from '../../utils/theme-context';
 
@@ -33,14 +33,14 @@ type OtpScreenNavigationProp = NativeStackNavigationProp<
 
 const VerifyOtp = () => {
   const navigation = useNavigation<OtpScreenNavigationProp>();
-  const [otp, setOtp] = useState(['', '', '', '']);
-  const [isValid, setIsValid] = useState(true);
-  const inputRefs = useRef([]);
-  const [attempts, setAttempts] = useState(2);
-  const [entry, setEntry] = useState(false);
-  const [timer, setTimer] = useState(30);
-  const [isTimerExpired, setIsTimerExpired] = useState(false);
-  const [intervalId, setIntervalId] = useState(null);
+  const [otp, setOtp] = useState<string[]>(['', '', '', '']);
+  const [isValid, setIsValid] = useState<boolean>(true);
+  const inputRefs = useRef<(TextInput | null)[]>([]);
+  const [attempts, setAttempts] = useState<number>(2);
+  const [entry, setEntry] = useState<boolean>(false);
+  const [timer, setTimer] = useState<number>(30);
+  const [isTimerExpired, setIsTimerExpired] = useState<boolean>(false);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
 
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode; 
@@ -75,7 +75,7 @@ const VerifyOtp = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      inputRefs.current[0].focus();
+      inputRefs.current[0]?.focus();
     }, 100);
 
     startNewTimer();
@@ -100,17 +100,17 @@ const VerifyOtp = () => {
   );
 
   
-  const handleChange = (text, index) => {
+  const handleChange =(text: string, index: number) => {
     const newOtp = [...otp];
     newOtp[index] = text.replace(/[^0-9]/g, '');
     setOtp(newOtp);
 
     if (text && index < 3) {
-      inputRefs.current[index + 1].focus();
+      inputRefs.current[index + 1]?.focus();
     }
 
     if (text === '' && index > 0) {
-      inputRefs.current[index - 1].focus();
+      inputRefs.current[index - 1]?.focus();
     }
 
     if (newOtp.every(digit => digit.length === 1)) {

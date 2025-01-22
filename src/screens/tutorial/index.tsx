@@ -12,15 +12,28 @@ import Svg, {Circle} from 'react-native-svg';
 
 import styles from './styles';
 import tutorialData from '../../assets/tutorialData';
-import {ScreenNames} from '../../navigator/screenNames';
+import {ScreenNames} from '../../utils/screenNames';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../utils/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 const {width} = Dimensions.get('window');
+type SignupScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.Tutorial
+>;
 
-const TutorialScreen = ({navigation}) => {
+interface SlideItem {
+  key: string;
+  image: string;
+  title: string;
+  description: string;
+}
+const TutorialScreen = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
-  const flatListRef = useRef(null);
-
+  const flatListRef = useRef<FlatList<SlideItem>>(null);
+  const navigation = useNavigation<SignupScreenNavigationProp>();
   const RADIUS = 30;
   const STROKE_WIDTH = 5;
   const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
@@ -31,7 +44,7 @@ const TutorialScreen = ({navigation}) => {
     extrapolate: 'clamp',
   });
 
-  const renderItem = ({item}) => (
+  const renderItem = ({ item }: { item: SlideItem }) => (
     <View style={styles.slide}>
       <Image style={styles.image} source={{uri: item.image}} />
       <Text style={styles.title}>{item.title}</Text>
@@ -42,7 +55,9 @@ const TutorialScreen = ({navigation}) => {
   const handleNext = () => {
     const nextIndex = currentIndex + 1;
     if (nextIndex < tutorialData.length) {
-      flatListRef.current.scrollToIndex({index: nextIndex});
+      if (flatListRef.current) {
+        flatListRef.current.scrollToIndex({ index: nextIndex });
+      }
       setCurrentIndex(nextIndex);
     } else {
       navigation.reset({

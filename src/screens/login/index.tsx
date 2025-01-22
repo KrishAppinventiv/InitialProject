@@ -18,27 +18,33 @@ import {Images} from '../../assets';
 import {vh, vw} from '../../theme/dimensions';
 import {CountryPicker} from 'react-native-country-codes-picker';
 import Button from '../../components/Button';
-import {ScreenNames} from '../../navigator/screenNames';
+
 import styles from './styles';
 import {colors} from '../../theme';
 import {showToast} from '../../components/CustomToast';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext } from '../../utils/theme-context';
-
+import { RootStackParamList } from '../../utils/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ScreenNames } from '../../utils/screenNames';
+type SignupScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.Signup
+>;
 const Login = () => {
   const [countryCode, setCountryCode] = useState('+1');
   const [Phone, SetPhone] = useState('');
   const [show, setShow] = useState(false);
   const [flag, setflag] = useState('');
   const [isFocused, setIsFocused] = useState(false);
-  const navigation = useNavigation();
+  const navigation = useNavigation<SignupScreenNavigationProp>();
   const { t } = useTranslation();
   const [errorVisible, setErrorVisible] = useState(false);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
   const numberRef = useRef<TextInput | null>(null);
  
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;    
-
+  
   const validatePhoneNumber = (phone: string) => {
     const phoneRegex = /^[0-9]{5,13}$/;
     if (!phone) {

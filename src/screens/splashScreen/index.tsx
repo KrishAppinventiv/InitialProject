@@ -3,7 +3,8 @@ import React, {useEffect, useState} from 'react';
 import styles from './styles';
 import {Images} from '../../assets';
 import {CommonActions, useNavigation} from '@react-navigation/native';
-import {ScreenNames} from '../../navigator/screenNames';
+import {ScreenNames} from '../../utils/screenNames';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 // import Splash from 'react-native-splash-screen';
 
 const SplashScreen = () => {
@@ -18,11 +19,19 @@ const SplashScreen = () => {
     }).start();
 
   useEffect(() => {
-    
+    const checkLoginStatus = async () => {
+      const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
+
+      setTimeout(() => {
+        if (isLoggedIn === 'true') {
+          navigation.replace(ScreenNames.BottomTab);
+        } else {
+          navigation.replace(ScreenNames.Signin);
+        }
+      }, 2000);
+    };
     viewAnimate();
-    setTimeout(() => {
-      navigation.replace(ScreenNames.Signin);
-    }, 2000);
+    checkLoginStatus();
   }, []);
 
   return (

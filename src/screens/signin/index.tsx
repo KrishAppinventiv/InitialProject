@@ -15,13 +15,13 @@ import {useNavigation} from '@react-navigation/native';
 
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {ScreenNames} from '../../navigator/screenNames';
+import {ScreenNames} from '../../utils/screenNames';
 import styles from './styles';
 import {vh, vw} from '../../theme/dimensions';
 import Button from '../../components/Button';
 import InputField from '../../components/TextInput';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../navigator/types';
+import {RootStackParamList} from '../../utils/types';
 import Toast from 'react-native-toast-message';
 import {colors} from '../../theme';
 import {showToast} from '../../components/CustomToast';
@@ -35,17 +35,18 @@ import { ThemeContext } from '../../utils/theme-context';
 import {
   auth,
 }from '../../firebase/firebaseConfig';
-// import {
-//   AccessToken,
-//   AuthenticationToken,
-//   LoginManager,
-//   Profile
-// } from 'react-native-fbsdk-next';
+import {
+  AccessToken,
+  AuthenticationToken,
+  LoginManager,
+  Profile
+} from 'react-native-fbsdk-next';
 import {
   GoogleAuthProvider,
   getAuth,
   signInWithCredential
 } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 type SigninScreenNavigationProp = NativeStackNavigationProp<
@@ -57,37 +58,37 @@ const Signin = () => {
   const [Email, SetEmail] = useState('');
   const [Emailreset, SetEmailReset] = useState('');
   const [Password, SetPassword] = useState('');
-  const [emailError, setEmailError] = useState(false);
+  const [emailError, setEmailError] = useState<string>('');
+const [passwordError, setPasswordError] = useState<string>('');
+
   const [emailresetError, setEmailresetError] = useState('');
-  const [passwordError, setPasswordError] = useState(false);
+  
   const [accountError, setAccountError] = useState(false);
   const navigation = useNavigation<SigninScreenNavigationProp>();
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [resetPasswordEmailSent, setResetPasswordEmailSent] = useState(false);
-  const emailInputRef = useRef(null);
-  const passwordInputRef = useRef(null);
+  const emailInputRef = useRef<TextInput | null>(null);
+  const passwordInputRef = useRef<TextInput | null>(null);
   const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
 
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;    
   const validateEmail = (email: string): boolean => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-    if (!emailRegex.test(email)) {
-      setEmailError(true);
-
-      showToast('error', 'Invalid Email format');
-
+  
+    if (!email) {
+      setEmailError('Email is required');
       return false;
-
+    } else if (!emailRegex.test(email)) {
+      setEmailError('Invalid email format');
+      return false;
     } 
-      setEmailError(false);
-    
-
+    setEmailError(''); 
     return true;
   };
+  
 
-  const handleSignup = async () => {
+  const onGoogleButtonPress = async () => {
     console.log('ready');
     try {
       console.log('go');
@@ -95,13 +96,18 @@ const Signin = () => {
       const response = await GoogleSignin.signIn();
       console.log('12345678-->', response);
       const idToken = response?.data?.idToken;
-
+     
       if (!idToken) {
         throw new Error('No idToken received from Google');
       }
 
       const googleCredentials = GoogleAuthProvider.credential(idToken);
       await signInWithCredential(auth, googleCredentials);
+      await AsyncStorage.setItem('isLoggedIn', 'true');
+  
+      setTimeout(() => {
+        navigation.replace(ScreenNames.BottomTab);
+      }, 2000);
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('User cancelled the login flow');
@@ -120,8 +126,8 @@ const Signin = () => {
     try {
       console.log(GoogleSignin);
       GoogleSignin.configure({
-        webClientId: '619186265584-s3un8qc1pk4o5i35dfasurpopjbed12i.apps.googleusercontent.com', // Web Client ID for Android
-        iosClientId: '619186265584-p8lqpofknpne2ua2568d0p9fooeaiick.apps.googleusercontent.com', // Web Client ID for iOS
+        webClientId: '619186265584-s3un8qc1pk4o5i35dfasurpopjbed12i.apps.googleusercontent.com', 
+        iosClientId: '619186265584-p8lqpofknpne2ua2568d0p9fooeaiick.apps.googleusercontent.com', 
         offlineAccess: true
       });
       console.log('Google SignIn configured');
@@ -135,16 +141,17 @@ const Signin = () => {
   }, []);
 
   const validatePassword = (password: string): boolean => {
-    if (password.length < 6) {
-      setPasswordError(true);
-
-      showToast('error', 'Password should have at least 6 characters');
+    if (!password) {
+      setPasswordError('Password is required');
       return false;
-    } else {
-      setPasswordError(false);
+    } else if (password.length < 6) {
+      setPasswordError('Password should have at least 6 characters');
+      return false;
     }
+    setPasswordError('');
     return true;
   };
+  
 
   const handleEmailSubmit = () => {
     setTimeout(() => {
@@ -177,38 +184,47 @@ const Signin = () => {
     }
   };
 
-  // const onFacebookButtonPress = async () => {
-  //   try {
-  //     const result = await LoginManager.logInWithPermissions(
-  //       ['public_profile', 'email'],
-  //       'limited',
-  //       'my_nonce',
-  //     );
-  //     console.log('res', result);
-  //     if (Platform.OS === 'ios') {
-  //       const result = await AuthenticationToken.getAuthenticationTokenIOS();
-  //       console.log(result?.authenticationToken);
-  //     } else {
-  //       const result = await AccessToken.getCurrentAccessToken();
-  //       console.log(result?.accessToken);
-  //     }
-  //     const currentProfile = await Profile.getCurrentProfile();
-  //     if (currentProfile) {
-  //       console.log('current profile', currentProfile);
-  //       navigation.navigate(ScreenNames.Home);
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const onFacebookButtonPress = async () => {
+    console.log(LoginManager)
+    try {
+      const result = await LoginManager.logInWithPermissions(
+        ['public_profile', 'email'],
+      );
+      console.log('res', result);
+      if (Platform.OS === 'ios') {
+        const result = await AuthenticationToken.getAuthenticationTokenIOS();
+        console.log(result?.authenticationToken);
+      } else {
+        const result = await AccessToken.getCurrentAccessToken();
+        console.log(result?.accessToken);
+      }
+      const currentProfile = await Profile.getCurrentProfile();
+      if (currentProfile) {
+        console.log('current profile', currentProfile);
+        await AsyncStorage.setItem('isLoggedIn', 'true');
+  
+        setTimeout(() => {
+          navigation.replace(ScreenNames.BottomTab);
+        }, 2000);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const handleSubmit = async () => {
-    validatePassword(Password);
+    const isEmailValid = validateEmail(Email);
+    const isPasswordValid = validatePassword(Password);
+  
+    if (!isEmailValid || !isPasswordValid) return; 
+  
     try {
       setTimeout(() => {
         showToast('success', 'User logged in successfully!');
       }, 500);
 
+      await AsyncStorage.setItem('isLoggedIn', 'true');
+  
       setTimeout(() => {
         navigation.replace(ScreenNames.BottomTab);
       }, 2000);
@@ -234,17 +250,27 @@ const Signin = () => {
               ref={emailInputRef}
               placeholder="Email Address"
               value={Email}
-              onChangeText={text => SetEmail(text.toLowerCase())}
+              textStyle={isDarkMode?styles.white:styles.black}
+              onChangeText={text => {
+                SetEmail(text.toLowerCase())
+                validateEmail(text)
+              }}
               onSubmitEditing={handleEmailSubmit}
               style={[styles.inputField,emailError ? {borderColor: 'red'} : {}]}
               iconName={'email'}
             />
+
+{emailError ? <Text style={styles.errorText}>{emailError}</Text> : null}
           
             <InputField
               ref={passwordInputRef}
               placeholder="Password"
+              textStyle={isDarkMode?styles.white:styles.black}
               value={Password}
-              onChangeText={text => SetPassword(text)}
+              onChangeText={text => {
+                SetPassword(text)
+                validatePassword(text)
+              }}
               secureTextEntry={!isPasswordVisible}
               style={[styles.inputField,passwordError ? {borderColor: 'red'} : {}]}
               togglePasswordVisibility={() =>
@@ -253,6 +279,8 @@ const Signin = () => {
               isPasswordVisible={isPasswordVisible}
               iconName="password"
             />
+
+{passwordError ? <Text style={styles.errorText}>{passwordError}</Text> : null}
         
         </View>
 
@@ -275,7 +303,7 @@ const Signin = () => {
         </View>
 
         <View style={styles.otherOption}>
-          <TouchableOpacity activeOpacity={0.6} onPress={()=> handleSignup()}>
+          <TouchableOpacity activeOpacity={0.6} onPress={()=> onGoogleButtonPress()}>
             <View style={styles.googleView}>
               <Image source={Images.google} style={styles.google} />
               <Text style={{fontSize: vh(15), fontWeight: '600'}}>
@@ -283,7 +311,7 @@ const Signin = () => {
               </Text>
             </View>
           </TouchableOpacity>
-          <TouchableOpacity activeOpacity={0.6}>
+          <TouchableOpacity activeOpacity={0.6} onPress={()=> onFacebookButtonPress()}>
             <View style={styles.facebookView}>
               <AntDesign name={'facebook-square'} size={28} color={'white'} />
               <Text
@@ -335,12 +363,12 @@ const Signin = () => {
               Enter your email address, and we will send you a link to reset
               your password.
             </Text>
-            <View style={styles.border}>
+            <View>
               <InputField
                 placeholder="Email Address"
                 value={Emailreset}
                 onChangeText={text => SetEmailReset(text.toLowerCase())}
-                style={emailresetError ? {borderColor: 'red'} : {}}
+                style={[styles.resetField,emailresetError ? {borderColor: 'red'} : {}]}
                 iconName="email"
               />
             </View>

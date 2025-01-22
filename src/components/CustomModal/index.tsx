@@ -1,7 +1,13 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Modal, View, TouchableWithoutFeedback, Keyboard, StyleSheet } from 'react-native';
 
-const CustomModal = ({ modalVisible, setModalVisible, children }) => {
+interface CustomModalProps {
+  modalVisible: boolean;
+  setModalVisible: (visible: boolean) => void;
+  children: ReactNode;
+}
+
+const CustomModal: React.FC<CustomModalProps> = ({ modalVisible, setModalVisible, children }) => {
   return (
     <Modal
       animationType="fade"
@@ -29,13 +35,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)', 
   },
-  // modalContainer: {
-  //   backgroundColor: 'red',
-  //   padding: 20,
-  //   borderRadius: 10,
-  //   width: '80%',
-  //   maxWidth: 400,
-  // },
+ 
 });
 
 export default CustomModal;

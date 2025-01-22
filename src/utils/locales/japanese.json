@@ -19,4 +19,82 @@
     "multilingual": {
       "continue": "続ける",
       "all_languages": "すべての言語" 
-    }}}
+    },
+    "settings": {
+      "language": "言語",
+      "fontSize": "フォントサイズ",
+      "darkMode": "ダークモード",
+      "deleteAccount": "アカウントを削除する",
+      "logOut": "ログアウト",
+      "languageOptions": {
+        "english": "英語",
+        "german": "ドイツ語",
+        "french": "フランス語",
+        "hindi": "ヒンディー語",
+        "japanese": "日本語",
+        "urdu": "ウルドゥー語"
+      }
+    },
+    "addShipment": {
+    "title": "配送を追加",
+    "generalDetail": "一般詳細",
+    "shipmentDetail": "配送詳細",
+    "pickupDetails": "集荷詳細",
+    "completionDetails": "完了詳細",
+    "next": "次へ"
+  },
+  "completion": {
+    "email": "メールID",
+    "contactNumber": "連絡先番号",
+    "addressID": "住所ID",
+    "startTime": "開始時間*",
+    "endTime": "終了時間*",
+    "branchName": "支店名*",
+    "deliveryTimezone": "配送タイムゾーン",
+    "deliveryNotes": "配送メモ",
+    "whatsappOptIn": "WhatsAppオプトイン"
+  },
+  "general": {
+    "shipmentType": "出荷タイプ*",
+    "returnShipment": "返品出荷",
+    "yes": "はい",
+    "no": "いいえ"
+  },
+  "home": {
+    "greeting": "こんにちは,",
+    "shipmentQuestion": "今日はどこに出荷しますか？",
+    "searchPlaceholder": "ここで検索してください..."
+  },
+  "pickupDetails": {
+    "customerID": "顧客ID*",
+    "name": "名前*",
+    "email": "メールID",
+    "contactNumber": "連絡先番号",
+    "addressID": "住所ID",
+    "startTime": "開始時間*",
+    "endTime": "終了時間*",
+    "serviceTime": "サービス時間（分）",
+    "branchName": "支店名*"
+  },
+  "shipmentDetail": {
+    "shipmentNumber": "出荷番号",
+    "shipmentDateTimezone": "出荷日タイムゾーン",
+    "shipmentDate": "出荷日*",
+    "priority": "優先度",
+    "parentShipmentNumber": "親出荷番号",
+    "skillSet": "スキルセット",
+    "deliveryAssociates": "配達担当者",
+    "partialDelivery": "部分配達許可",
+    "salesReturn": "販売返品許可",
+    "shipmentCancellation": "出荷キャンセル許可",
+    "serviceTime": "サービス時間 (分単位)",
+    "autoAllocateProfileName": "自動割り当てプロファイル名",
+    "serviceType": "サービスの種類"
+  },
+  "saveScreen": {
+    "heading": "保存された出荷",
+    "emptyMessage": "保存された出荷は空です"
+  }
+  
+  
+  }}

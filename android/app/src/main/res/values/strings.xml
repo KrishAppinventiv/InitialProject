@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">InitialProject</string>
+      <string name="facebook_app_id">1144519503713999</string>
+
+    <!-- Facebook Client Token -->
+    <string name="facebook_client_token">663eda2bc6a2c7dc38361125937fe04a</string>
+
+    <!-- Facebook Login Protocol Scheme -->
+    <string name="fb_login_protocol_scheme">fb1144519503713999</string> <!-- Make sure this matches your Facebook App ID -->
 </resources>
