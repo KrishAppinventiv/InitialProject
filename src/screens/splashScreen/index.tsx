@@ -21,13 +21,16 @@ const SplashScreen = () => {
   useEffect(() => {
     const checkLoginStatus = async () => {
       const isLoggedIn = await AsyncStorage.getItem('isLoggedIn');
-
+      const hasSeenTutorial = await AsyncStorage.getItem('hasSeenTutorial');
       setTimeout(() => {
         if (isLoggedIn === 'true') {
           navigation.replace(ScreenNames.BottomTab);
         } else {
+          if(!hasSeenTutorial){
+            navigation.replace(ScreenNames.Tutorial);
+          }
           navigation.replace(ScreenNames.Signin);
-        }
+        } 
       }, 2000);
     };
     viewAnimate();

@@ -34,6 +34,13 @@ const Setting = () => {
   const handleLogout = async () => {
     setModalVisible(false);
     await AsyncStorage.removeItem('isLoggedIn');
+    try {
+        await AsyncStorage.setItem('selectedLanguage', 'en');
+        i18n.changeLanguage('en');
+        I18nManager.forceRTL(false);
+      } catch (error) {
+        console.error('Error resetting language to English', error);
+      }
     navigation.reset({
       index: 0,
       routes: [{ name: ScreenNames.Signin }],

@@ -11,8 +11,8 @@ const App = () => {
    <>
      <ThemeProvider>
       <FontSizeProvider>
-      <Toast/>  
      <RootNavigator/>
+     <Toast/>  
      </FontSizeProvider>
      </ThemeProvider>
    

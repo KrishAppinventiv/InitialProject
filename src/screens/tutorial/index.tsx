@@ -16,6 +16,7 @@ import {ScreenNames} from '../../utils/screenNames';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../../utils/types';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const {width} = Dimensions.get('window');
 type SignupScreenNavigationProp = NativeStackNavigationProp<
@@ -52,7 +53,7 @@ const TutorialScreen = () => {
     </View>
   );
 
-  const handleNext = () => {
+  const handleNext = async () => {
     const nextIndex = currentIndex + 1;
     if (nextIndex < tutorialData.length) {
       if (flatListRef.current) {
@@ -60,6 +61,8 @@ const TutorialScreen = () => {
       }
       setCurrentIndex(nextIndex);
     } else {
+
+      await AsyncStorage.setItem('hasSeenTutorial', 'true');
       navigation.reset({
         index: 0,
         routes: [{name: ScreenNames.Signin}],
