@@ -1,11 +1,17 @@
-import {View, Text, Animated, Image, ImageBackground} from 'react-native';
-import React, {useEffect, useState} from 'react';
-import styles from './styles';
-import {Images} from '../../assets';
-import {CommonActions, useNavigation} from '@react-navigation/native';
-import {ScreenNames} from '../../utils/screenNames';
+// Library Imports
 import AsyncStorage from '@react-native-async-storage/async-storage';
-// import Splash from 'react-native-splash-screen';
+import { useNavigation } from '@react-navigation/native';
+import React, { useEffect, useState } from 'react';
+import { Animated, ImageBackground } from 'react-native';
+
+// Asset Imports
+import { Images } from '../../assets';
+
+// Utility Imports
+import { ScreenNames } from '../../utils/screenNames';
+
+// Style Imports
+import styles from './styles';
 
 const SplashScreen = () => {
   const [fadeAnim] = useState(new Animated.Value(0));
@@ -36,7 +42,6 @@ const SplashScreen = () => {
     viewAnimate();
     checkLoginStatus();
   }, []);
-
   return (
     <Animated.View
       style={[styles.containers, {opacity: fadeAnim}]}

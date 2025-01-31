@@ -1,6 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 import { colors } from '../../theme';
-import { vh, vw } from '../../theme/dimensions';
+import { vh, vw } from '../../utils/dimension';
+
 
 
 
@@ -17,7 +18,7 @@ export default StyleSheet.create({
         marginVertical: 8,
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: '#4C4C6D',
+        borderColor: colors.purpleShade,
       },
       checkboxContainer: {
         flexDirection: 'row',
@@ -25,7 +26,7 @@ export default StyleSheet.create({
        marginBottom:vh(20)
       },
       checkboxLabel: {
-        color: '#fff',
+        color: colors.white,
         fontSize: vh(13),
         marginLeft: 8,
         fontWeight:'500'
@@ -40,7 +41,7 @@ export default StyleSheet.create({
         borderRadius: 5
       },
       tick: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 18,
         fontWeight: 'bold'
       },
@@ -48,7 +49,7 @@ export default StyleSheet.create({
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
       },
       errorText: {
         color: 'red',
@@ -59,9 +60,17 @@ export default StyleSheet.create({
         borderColor: 'red',
       },
       white:{
-        color:'#ffffff'
+        color:colors.white
       },
       black:{
-      color:'#000'
-      }
+      color:colors.black
+      },
+      footer: {
+        backgroundColor: colors.main,
+        paddingHorizontal: 10,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+        borderRadius: 4,
+        marginBottom: vh(20),
+      },
 })

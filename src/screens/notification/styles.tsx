@@ -1,6 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
+
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     dateText: {
@@ -14,25 +15,25 @@ export default StyleSheet.create({
         borderRadius: 5,
       },
       item: {
-        color: '#71B1A1',
+        color: colors.lightestGreen,
         fontWeight: '800',
         fontSize: 16,
       },
       source: {
         height:vh(28),
         width:vw(28),
-        backgroundColor:'#FFE1B3',
+        backgroundColor:colors.peach,
         justifyContent:'center',
         alignItems:'center',
         borderRadius:vh(10),
       },
       time: {
-        color:'#A9A9A9',
+        color:colors.thinGrey,
         marginTop:vh(8),
         fontSize:vh(13),
       },
       desc: {
-        color:'#A9A9A9',
+        color:colors.thinGrey,
         marginTop:vh(10),
         fontSize:vh(15),
         lineHeight:vh(22),
@@ -77,10 +78,10 @@ export default StyleSheet.create({
        justifyContent:'space-between',
         marginBottom: vh(20),
         marginHorizontal: vw(20),
-        backgroundColor: '#F0F0F0',
+        backgroundColor: colors.lighterGrey,
         flexDirection:'row',
         borderRadius: 10,
-        shadowColor: '#000',
+        shadowColor: colors.black,
         shadowOpacity: 0.2,
         shadowRadius: 10,
         paddingVertical:vh(14),
@@ -88,6 +89,6 @@ export default StyleSheet.create({
         marginTop:vh(15)
       },
       darkContainer: {
-       backgroundColor:'#2d3040'
+       backgroundColor:colors.dark
       },
 })

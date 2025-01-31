@@ -1,3 +1,14 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "module": "esnext"
+    // Add any custom compiler options here if needed
+  },
+  "include": [
+    "src/**/*", // Include all files in the src directory
+    "global.d.ts"  // Include the env.d.ts file for environment variables
+  ],
+  "exclude": [
+    "node_modules" // Exclude node_modules
+  ]
 }

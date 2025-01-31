@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     already: {
@@ -9,7 +9,7 @@ export default StyleSheet.create({
         marginTop: vh(30),
       },
       signupColor: {
-        color: '#FF9C00',
+        color: 'colors.yellowisj',
       },
       
       gap: {
@@ -19,7 +19,7 @@ export default StyleSheet.create({
       },
       container: {
         flex: 1,
-        backgroundColor: '#ffffff',
+        backgroundColor: colors.white,
       },
       img: {
         marginTop: 20,
@@ -32,13 +32,13 @@ export default StyleSheet.create({
         marginBottom: 40,
       },
       signText: {
-        color: '#000000',
+        color: colors.black,
         fontSize: 30,
         fontWeight: '700',
       },
     
       welText: {
-        color: '#000000',
+        color: colors.black,
         fontSize: 23,
         fontWeight: '400',
         fontFamily: 'Poppins',
@@ -66,7 +66,7 @@ export default StyleSheet.create({
         padding: vh(8),
         
         borderRadius: 7,
-        borderColor: '#ccc',
+        borderColor: colors.lightGrey,
         borderWidth: 1,
         backgroundColor: 'white',
         marginBottom: vh(18)
@@ -76,7 +76,7 @@ export default StyleSheet.create({
       inputContainer1: {
         padding: 10,
         borderRadius: 7,
-        borderColor: '#ccc',
+        borderColor: colors.lightGrey,
         borderWidth: 1,
         backgroundColor: 'white',
       },
@@ -90,7 +90,7 @@ export default StyleSheet.create({
         marginTop: vh(15),
         // paddingHorizontal: 130,
         paddingVertical: vh(15),
-        backgroundColor: '#129575',
+        backgroundColor: colors.lightBrown,
         borderRadius: 10,
         justifyContent: 'center',
         alignItems: 'center',
@@ -136,7 +136,7 @@ export default StyleSheet.create({
         width: 350,
         borderRadius: 7,
         marginStart: 35,
-        backgroundColor: '#ffe8e7',
+        backgroundColor: colors.lightPink,
     
         justifyContent: 'center',
         alignItems: 'center',
@@ -154,7 +154,7 @@ export default StyleSheet.create({
         marginBottom: 25,
       },
       forgetText: {
-        color: '#FFAD30',
+        color:colors.darkYellow,
         fontWeight: '600',
       },
     
@@ -182,7 +182,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        shadowColor: '#C3C3C3',
+        shadowColor: colors.thickGrey,
         shadowOpacity: 5,
         shadowRadius: 3,
         backgroundColor: 'white',
@@ -197,12 +197,12 @@ export default StyleSheet.create({
     
       option: {
         marginHorizontal: 10,
-        color: '#c7c7c7',
+        color: colors.thinestGrey,
       },
       footerView: {
         height: 1,
         width: 30,
-        backgroundColor: '#c7c7c7',
+        backgroundColor: colors.thinestGrey,
         alignSelf: 'center',
       },
       footerContain: {
@@ -235,7 +235,7 @@ export default StyleSheet.create({
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor:'#2d3040'
+        backgroundColor:colors.dark
       },
       inputField: {
         paddingHorizontal: vh(8),
@@ -243,14 +243,14 @@ export default StyleSheet.create({
         marginVertical: vh(6),
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: '#ccc',
-        color: '#fff',
+        borderColor: colors.lightGrey,
+        color: colors.white,
         marginTop:vh(10)
       },
       white:{
-        color:'#ffffff'
+        color:colors.white
       },
       black:{
-      color:'#000'
+      color:colors.black
       }
 })

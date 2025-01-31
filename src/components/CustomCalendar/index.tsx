@@ -11,6 +11,14 @@ type CustomCalendarProps = {
   onClose: () => void;
 };
 
+type Day = {
+  dateString: string; 
+  day: number; 
+  month: number; 
+  year: number; 
+  timestamp: number; 
+};
+
 const CustomCalendar: React.FC<CustomCalendarProps> = ({
   visible,
   selectedDate,
@@ -24,7 +32,7 @@ const CustomCalendar: React.FC<CustomCalendarProps> = ({
       <View style={styles.calendarContainer}>
         <Calendar
           current={moment().format('YYYY-MM-DD')}
-          onDayPress={(day:any) => {
+          onDayPress={(day: Day) => {
             if (day?.dateString) {
               onDateSelect(moment(day).format('DD, MMM YYYY'));
               onClose();

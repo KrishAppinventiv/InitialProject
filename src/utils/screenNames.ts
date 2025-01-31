@@ -14,7 +14,8 @@ enum ScreenNames{
   Notify='Notification',
   Save='Save',
   Category='Category',
-  Otp='Otp'
+  Otp='Otp',
+  Post='Post'
 } ;
 
 export {ScreenNames};

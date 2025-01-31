@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     container:{
@@ -14,8 +14,8 @@ export default StyleSheet.create({
         marginVertical: 8,
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: '#4C4C6D',
-        color: '#fff',
+        borderColor: colors.purpleShade,
+        color: colors.white,
       },
       errorText: {
         color: 'red',
@@ -24,15 +24,15 @@ export default StyleSheet.create({
         marginLeft: 10,
       },
       white:{
-        color:'#ffffff'
+        color:colors.white
       },
       lightMode:{
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
       },
       black:{
-        color:'#000'
+        color:colors.black
         }
 })

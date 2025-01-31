@@ -1,10 +1,10 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
   signupColor: {
-    color: '#FF9C00',
+    color: colors.yellowish,
   },
   dontView: {
     flexDirection: 'row',
@@ -21,7 +21,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    shadowColor: '#C3C3C3',
+    shadowColor: colors.thickGrey,
     shadowOpacity: 5,
     shadowRadius: 3,
     backgroundColor: 'white',
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    shadowColor: '#C3C3C3',
+    shadowColor: colors.thickGrey,
     shadowOpacity: 5,
     shadowRadius: 3,
     backgroundColor: 'white',
@@ -47,10 +47,10 @@ export default StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    shadowColor: '#C3C3C3',
+    shadowColor: colors.thickGrey,
     shadowOpacity: 5,
     shadowRadius: 3,
-    backgroundColor: '#4267B2',
+    backgroundColor: colors.midPurple,
     borderRadius: vh(10),
     padding: 15,
     marginTop:vh(15)
@@ -64,12 +64,12 @@ export default StyleSheet.create({
 
   option: {
     marginHorizontal: vh(10),
-    color: '#c7c7c7',
+    color: colors.thinestGrey,
   },
   footerView: {
     height: 1,
     width: 30,
-    backgroundColor: '#c7c7c7',
+    backgroundColor: colors.thinestGrey,
     alignSelf: 'center',
   },
   footerContain: {
@@ -79,7 +79,7 @@ export default StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#ffffff',
+    backgroundColor: colors.white,
   },
   img: {
     marginTop: vh(20),
@@ -92,13 +92,13 @@ export default StyleSheet.create({
     marginBottom: 40,
   },
   signText: {
-    color: '#000000',
+    color: colors.black,
     fontSize: vh(24),
     fontWeight: '700',
   },
 
   welText: {
-    color: '#000000',
+    color: colors.black,
     fontSize: vh(22),
     // fontWeight: '400',
     fontFamily: 'Poppins',
@@ -126,7 +126,7 @@ export default StyleSheet.create({
     padding: vh(8),
     // width: vw(325),
     borderRadius: 7,
-    borderColor: '#ccc',
+    borderColor: colors.lightGrey,
     borderWidth: 1,
     backgroundColor: 'white',
     marginTop: vh(22),
@@ -184,7 +184,7 @@ export default StyleSheet.create({
     width: 350,
     borderRadius: 7,
     marginStart: 35,
-    backgroundColor: '#ffe8e7',
+    backgroundColor: colors.lightPink,
 
     justifyContent: 'center',
     alignItems: 'center',
@@ -202,7 +202,7 @@ export default StyleSheet.create({
     marginBottom: vh(25),
   },
   forgetText: {
-    color: '#FFAD30',
+    color:colors.darkYellow,
     fontWeight: '600',
   },
 
@@ -239,7 +239,7 @@ export default StyleSheet.create({
   },
   modalText: {
     fontSize: vh(14),
-    color: '#A9A9A9',
+    color: colors.thinGrey,
     marginBottom: 20,
   },
   modalInput: {
@@ -256,12 +256,12 @@ export default StyleSheet.create({
     textAlign: 'center',
   },
   cancelButton: {
-    backgroundColor: '#DCDCDC',
+    backgroundColor: colors.thinestGrey,
     marginTop: vh(12),
     borderRadius: vh(15),
   },
   cancelButtonText: {
-    color: '#555',
+    color: colors.midGrey,
     fontSize: vh(16),
     textAlign: 'center',
   },
@@ -270,7 +270,7 @@ export default StyleSheet.create({
     backgroundColor:colors.white
   },
   darkMode:{
-    backgroundColor:'#2d3040'
+    backgroundColor:colors.dark
   },
   inputField: {
     paddingHorizontal: vh(8),
@@ -278,8 +278,8 @@ export default StyleSheet.create({
     marginVertical: 8,
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#ccc',
-    color: '#fff',
+    borderColor: colors.lightGrey,
+    color: colors.white,
   },
 
   resetField: {
@@ -288,14 +288,29 @@ export default StyleSheet.create({
     // marginVertical: 8,
     borderRadius: vh(28),
     borderWidth: 2,
-    borderColor: '#ccc',
-    color: '#fff',
+    borderColor: colors.lightGrey,
+    color: colors.white,
   },
   white:{
-    color:'#ffffff'
+    color:colors.white
   },
   black:{
-  color:'#000'
+  color:colors.black
+  },
+  phoneText: {
+    fontSize: vh(15),
+    marginLeft: vw(6),
+    fontWeight: '600',
+  },
+  googleText: {
+    fontSize: vh(15),
+    fontWeight: '600',
+  },
+  facebookText: {
+    fontSize: vh(15),
+    marginLeft: vw(6),
+    color: 'white',
+    fontWeight: '600',
   },
   
   

@@ -1,7 +1,8 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { colors } from '../../theme';
-import { vh, vw } from '../../theme/dimensions';
+import { vh, vw } from '../../utils/dimension';
+
 
 interface ButtonProps {
   onPress: () => void;
@@ -29,7 +30,7 @@ const styles = StyleSheet.create({
     marginTop: vh(30),
   },
   buttonText: {
-    color: '#fff',
+    color: colors.white,
     textAlign: 'center',
     fontSize: 16,
     fontWeight:'600'

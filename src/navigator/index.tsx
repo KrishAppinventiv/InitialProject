@@ -1,24 +1,21 @@
-
-
 import SplashScreen from '../screens/splashScreen';
 
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import Tutorial from '../screens/tutorial';
+import Login from '../screens/login';
 import Signin from '../screens/signin';
 import Signup from '../screens/signup';
+import Tutorial from '../screens/tutorial';
 import VerifyOtp from '../screens/verifyOtp';
-import Home from '../screens/Home';
-import Login from '../screens/login';
+import {ScreenNames} from '../utils/screenNames';
+import {RootStackParamList} from '../utils/types';
 import BottomTabNavigator from './bottomtab';
-import { ScreenNames } from '../utils/screenNames';
-
-const Stack: any = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
   const navigationRef: any = useNavigationContainerRef();
@@ -56,18 +53,8 @@ const RootNavigator = () => {
           name={ScreenNames.Signup}
           options={{headerShown: false}}
         />
-        {/* <Stack.Screen
-          component={VerifyOtp}
-          name={ScreenNames.Otp}
-          options={{headerShown: false}}
-        /> */}
-        {/* <Stack.Screen
-          component={Home}
-          name={ScreenNames.Home}
-          options={{headerShown: false}}
-        /> */}
 
-<Stack.Screen
+        <Stack.Screen
           component={BottomTabNavigator}
           name={ScreenNames.BottomTab}
           options={{headerShown: false}}

@@ -1,30 +1,32 @@
+// Library Imports
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  TouchableOpacity,
   Image,
-  Modal,
-  Pressable,
   KeyboardAvoidingView,
   Platform,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import React, {useState, useRef, useEffect, useContext} from 'react';
-import {colors} from '../../theme';
-import {SafeAreaView} from 'react-native-safe-area-context';
-import {ScreenNames} from '../../utils/screenNames';
-import {useNavigation} from '@react-navigation/native';
-import Button from '../../components/Button';
-import styles from './styles';
-import {Images} from '../../assets';
-import CustomModal from '../../components/CustomModal';
-import {vh} from '../../utils/dimension';
-import Toast from 'react-native-toast-message';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../utils/types';
-import { showToast } from '../../components/CustomToast';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+// Utility Imports
+import { colors } from '../../theme';
+import { vh } from '../../utils/dimension';
+import { ScreenNames } from '../../utils/screenNames';
 import { ThemeContext } from '../../utils/theme-context';
+import { RootStackParamList } from '../../utils/types';
+
+// Style Imports
+import styles from './styles';
+
+// Custom Component Imports
+import { Images } from '../../assets';
+import Button from '../../components/Button';
+import { showToast } from '../../components/CustomToast';
 
 type OtpScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -90,7 +92,7 @@ const VerifyOtp = () => {
   const buttonColor =
     otp[0] && otp[1] && otp[2] && otp[3] && isTimerExpired === false
       ? colors.main
-      : '#E8E8E8';
+      : colors.thinerGrey;
   const buttonDisabled = !(
     otp[0] &&
     otp[1] &&
@@ -164,14 +166,14 @@ const VerifyOtp = () => {
     </TouchableOpacity>
 
     <View style={styles.textContainer}>
-      <Text style={[styles.headText,isDarkMode && {color:'#ffffff'}]}>OTP Verification</Text>
+      <Text style={[styles.headText,isDarkMode && {color:colors.white}]}>OTP Verification</Text>
 
       <Text style={[styles.greyText,isDarkMode && {color:colors.main}]}>
         Enter the code that we just sent to you on
       </Text>
 
       <View style={{ flexDirection: 'row' }}>
-        <Text style={isDarkMode && {color:'#ffffff'}}>+1*****5435</Text>
+        <Text style={isDarkMode && {color:colors.white}}>+1*****5435</Text>
       </View>
     </View>
 
@@ -201,14 +203,14 @@ const VerifyOtp = () => {
         disabled={buttonDisabled}
       />
     <View style={styles.dontView}>
-      <Text style={{ color:isDarkMode?"#ffffff": '#888888' }}>Didn't receive the code?</Text>
+      <Text style={{ color:isDarkMode?colors.white: colors.darkGrey }}>Didn't receive the code?</Text>
       <TouchableOpacity onPress={() => startNewTimer()}>
         <Text style={styles.signupColor}> Resend</Text>
       </TouchableOpacity>
     </View>
 
     <View style={{ alignItems: 'center', marginTop: vh(30) }}>
-      <Text style={{color:isDarkMode?"#ffffff": '#888888' }}>{`00:${timer < 10 ? '0' : ''}${timer}`}</Text>
+      <Text style={{color:isDarkMode?colors.white: colors.darkGrey }}>{`00:${timer < 10 ? '0' : ''}${timer}`}</Text>
     </View>
 
     

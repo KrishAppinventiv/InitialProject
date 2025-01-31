@@ -1,14 +1,20 @@
-import {ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import InputField from '../../components/TextInput';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {vh} from '../../theme/dimensions';
-import {colors} from '../../theme';
-import {ThemeContext} from '../../utils/theme-context';
-import DatePicker from 'react-native-date-picker';
-import {useTranslation} from 'react-i18next';
-import styles from './styles';
+// Library Imports
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
+
+// Custom Imports
+import InputField from '../../components/TextInput';
+
+// Utility Imports
+import { ThemeContext } from '../../utils/theme-context';
+import { vh } from '../../utils/dimension';
+
+// Style Imports
+import styles from './styles';
+
+// Rest of the component code...
 
 const PickupDetails = () => {
   type ErrorState = string;
@@ -33,7 +39,6 @@ const PickupDetails = () => {
   const [endTimeError, setEndTimeError] = useState<ErrorState>('');
   const [serviceTimeError, setServiceTimeError] = useState<ErrorState>('');
   const [branchNameError, setBranchNameError] = useState<ErrorState>('');
-
   const customerIDRef = useRef<TextInput>(null);
   const nameRef = useRef<TextInput>(null);
   const emailRef = useRef<TextInput>(null);
@@ -44,13 +49,13 @@ const PickupDetails = () => {
   const serviceTimeRef = useRef<TextInput>(null);
   const branchNameRef = useRef<TextInput>(null);
 
-   useEffect(() => {
+  useEffect(() => {
     setTimeout(() => {
-       customerIDRef.current?.focus();
-      }, 100);
+      customerIDRef.current?.focus();
+    }, 100);
   }, []);
 
-  const {isDarkMode, toggleTheme} = useContext(ThemeContext);
+  const {isDarkMode} = useContext(ThemeContext);
   const {t} = useTranslation();
   const validateCustomerID = (value: string) => {
     if (!value.trim()) {
@@ -142,8 +147,7 @@ const PickupDetails = () => {
   };
 
   return (
-    
-    <ScrollView style={[styles.container, themeStyles]} >
+    <ScrollView style={[styles.container, themeStyles]}>
       <View style={{marginBottom: vh(20)}}>
         <InputField
           ref={customerIDRef}
@@ -177,14 +181,13 @@ const PickupDetails = () => {
         />
         {nameError && <Text style={styles.errorText}>{nameError}</Text>}
         <InputField
-         ref={emailRef}
+          ref={emailRef}
           placeholder={t('screens.pickupDetails.email')}
           value={email}
           onChangeText={text => {
             validateEmail(text);
             setEmail(text.toLowerCase());
           }}
-          
           textStyle={isDarkMode ? styles.white : styles.black}
           onSubmitEditing={() => contactNumberRef.current?.focus()}
           style={[styles.inputField, emailError ? {borderColor: 'red'} : {}]}
@@ -192,7 +195,7 @@ const PickupDetails = () => {
 
         {emailError && <Text style={styles.errorText}>{emailError}</Text>}
         <InputField
-           ref={contactNumberRef}
+          ref={contactNumberRef}
           placeholder={t('screens.pickupDetails.contactNumber')}
           textStyle={isDarkMode ? styles.white : styles.black}
           value={contactNumber}
@@ -231,13 +234,13 @@ const PickupDetails = () => {
           ref={startTimeRef}
           placeholder={t('screens.pickupDetails.startTime')}
           rightIconName="access-time"
-          onRightIconPress={()=>setOpenStartTime(true)}
+          onRightIconPress={() => setOpenStartTime(true)}
           value={startTime}
           textStyle={isDarkMode ? styles.white : styles.black}
           onSubmitEditing={() => endTimeRef.current?.focus()}
           onChangeText={text => {
             validateStartTime(text);
-            setStartTime(text)
+            setStartTime(text);
           }}
           style={[
             styles.inputField,
@@ -252,13 +255,13 @@ const PickupDetails = () => {
           ref={endTimeRef}
           placeholder={t('screens.pickupDetails.endTime')}
           rightIconName="access-time"
-          onRightIconPress={()=>setOpenEndTime(true)}
+          onRightIconPress={() => setOpenEndTime(true)}
           value={endTime}
           onSubmitEditing={() => serviceTimeRef.current?.focus()}
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             validateEndTime(text);
-            setEndTime(text)
+            setEndTime(text);
           }}
           style={[styles.inputField, endTimeError ? {borderColor: 'red'} : {}]}
         />
@@ -275,14 +278,14 @@ const PickupDetails = () => {
           }}
           style={[
             styles.inputField,
-            serviceTimeError ? {borderColor: 'red'} : {}
+            serviceTimeError ? {borderColor: 'red'} : {},
           ]}
         />
         {serviceTimeError && (
           <Text style={styles.errorText}>{serviceTimeError}</Text>
         )}
         <InputField
-         ref={serviceTimeRef}
+          ref={serviceTimeRef}
           placeholder={t('screens.pickupDetails.branchName')}
           textStyle={isDarkMode ? styles.white : styles.black}
           value={branchName}
@@ -300,24 +303,30 @@ const PickupDetails = () => {
         )}
       </View>
 
-<DateTimePickerModal
+      <DateTimePickerModal
         isVisible={openStartTime}
         mode="time"
-        onConfirm={(time: Date) =>{
-            const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    setStartTime(formattedTime);
-    setOpenStartTime(false)
+        onConfirm={(time: Date) => {
+          const formattedTime = time.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+          setStartTime(formattedTime);
+          setOpenStartTime(false);
         }}
         onCancel={() => setOpenStartTime(false)}
       />
 
-<DateTimePickerModal
+      <DateTimePickerModal
         isVisible={openEndTime}
         mode="time"
-        onConfirm={(time: Date) =>{
-            const formattedTime = time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    setEndTime(formattedTime);
-    setOpenEndTime(false)
+        onConfirm={(time: Date) => {
+          const formattedTime = time.toLocaleTimeString([], {
+            hour: '2-digit',
+            minute: '2-digit',
+          });
+          setEndTime(formattedTime);
+          setOpenEndTime(false);
         }}
         onCancel={() => setOpenEndTime(false)}
       />

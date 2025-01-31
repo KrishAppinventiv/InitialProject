@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     empty: {
@@ -41,10 +41,10 @@ export default StyleSheet.create({
             height: vh(170),
             marginBottom: vh(15),
             marginRight: vw(15),
-            backgroundColor: '#f9f9f9',
+            backgroundColor: colors.lightestGrey,
             justifyContent: 'flex-end',
             borderRadius: 10,
-            shadowColor: '#000',
+            shadowColor: colors.black,
             shadowOpacity: 0.3,
             shadowRadius: 10,
             
@@ -63,7 +63,7 @@ export default StyleSheet.create({
           recipeSource: {
             fontSize: 12,
             fontWeight: '500',
-            color: '#F0F0F0',
+            color: colors.lighterGrey,
             marginTop: vh(4),
           },
           transparentView: {
@@ -86,13 +86,13 @@ export default StyleSheet.create({
             position: 'absolute',
             top: 10,
             right: 10,
-            backgroundColor: '#FFE1B3',
+            backgroundColor: colors.peach,
             borderRadius: 17,
             flexDirection: 'row',
             justifyContent: 'center',
             alignItems: 'center',
           },  
           darkContainer: {
-            backgroundColor:'#2d3040'
+            backgroundColor:colors.dark
           },
 })

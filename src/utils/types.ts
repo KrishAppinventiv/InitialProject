@@ -17,4 +17,5 @@ export type RootStackParamList = {
     [ScreenNames.Login]:undefined;
     [ScreenNames.Tutorial]:undefined;
     [ScreenNames.Otp]:undefined;
+    [ScreenNames.Post]:undefined;
   };

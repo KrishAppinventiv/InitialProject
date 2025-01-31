@@ -1,25 +1,122 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
-import RootNavigator from './src/navigator'
-import { ThemeProvider } from './src/utils/theme-context'
-import { FontSizeProvider } from './src/utils/Font/FontSizeContext'
-import Toast from 'react-native-toast-message'
-
+import { StyleSheet, Text, View, Modal, ActivityIndicator } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import RootNavigator from './src/navigator';
+import { ThemeProvider } from './src/utils/theme-context';
+import Toast from 'react-native-toast-message';
+import { FontSizeProvider } from './src/utils/FontSizeContext';
+import NetInfo from '@react-native-community/netinfo';
+import Button from './src/components/Button';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 const App = () => {
+  const [isConnected, setIsConnected] = useState(true);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = NetInfo.addEventListener(state => {
+      console.log("Internet connection status changed:", state.isConnected);
+      console.log("Internet reachable status changed:", state.isInternetReachable);
+  
+      const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
+      setIsConnected(connected);
+      setIsModalVisible(!connected); // Show modal when no internet
+    });
+  
+    // Fetch initial network status
+    NetInfo.fetch().then(state => {
+      console.log("Initial connection status:", state.isConnected);
+      console.log("Initial internet reachable status:", state.isInternetReachable);
+  
+      const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
+      setIsConnected(connected);
+      setIsModalVisible(!connected);
+    });
+  
+    return () => {
+      unsubscribe();
+    };
+  }, []);
+  
+
+  const checkInternetConnection = () => {
+    NetInfo.fetch().then(state => {
+      const connected = state.isConnected !== null ? state.isConnected : false;
+      setIsConnected(connected);
+      setIsModalVisible(!connected); 
+    });
+  };
+
+
   return (
-   <>
-     <ThemeProvider>
-      <FontSizeProvider>
-     <RootNavigator/>
-     <Toast/>  
-     </FontSizeProvider>
-     </ThemeProvider>
-   
-   </>
-  )
-}
+    <>
+      <ThemeProvider>
+        <FontSizeProvider>
+         
+          <View style={styles.container}>
+            <RootNavigator />
+          
+            <Modal
+              visible={isModalVisible}
+              transparent={true}
+              animationType="fade"
+              onRequestClose={() => {}}
+            >
+              <View style={styles.overlay}>
+                <View style={styles.modalContent}>
+                  <MaterialIcons name="wifi-off" size={50} color="red" />
+                  <Text style={styles.modalText}>No Internet Connection</Text>
+                  <Text style={styles.modalSubText}>
+                    Please check your internet connection. The app will reconnect automatically.
+                  </Text>
+                  <ActivityIndicator size="large" color="#0000ff" style={styles.loader} />
+                </View>
+              </View>
+            </Modal>
+          </View>
+          <Toast />
+        </FontSizeProvider>
+      </ThemeProvider>
+    </>
+  );
+};
 
-export default App
+export default App;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  overlay: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
+  },
+  modalContent: {
+    width: '85%',
+    padding: 25,
+    backgroundColor: 'white',
+    borderRadius: 15,
+    alignItems: 'center',
+    elevation: 5, 
+    shadowColor: '#000', 
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+  },
+  modalText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginTop: 15,
+    color: '#333',
+  },
+  modalSubText: {
+    fontSize: 16,
+    color: '#555',
+    textAlign: 'center',
+    marginVertical: 10,
+  },
+  loader: {
+    marginTop: 10,
+  },
+});

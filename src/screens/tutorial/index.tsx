@@ -1,3 +1,4 @@
+// Library Imports
 import React, {useState, useRef} from 'react';
 import {
   View,
@@ -9,15 +10,18 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import Svg, {Circle} from 'react-native-svg';
-
-import styles from './styles';
-import tutorialData from '../../assets/tutorialData';
-import {ScreenNames} from '../../utils/screenNames';
-import { useNavigation } from '@react-navigation/native';
-import { RootStackParamList } from '../../utils/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import {useNavigation} from '@react-navigation/native';
+import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+// Utility Imports
+import {ScreenNames} from '../../utils/screenNames';
+import {RootStackParamList} from '../../utils/types';
+import {tutorialData} from '../../utils/constant';
+
+// Style Imports
+import styles from './styles';
+import CustomFlatList from '../../components/CustomFlatList';
 const {width} = Dimensions.get('window');
 type SignupScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -45,7 +49,7 @@ const TutorialScreen = () => {
     extrapolate: 'clamp',
   });
 
-  const renderItem = ({ item }: { item: SlideItem }) => (
+  const renderItem = ({item}: {item: SlideItem}) => (
     <View style={styles.slide}>
       <Image style={styles.image} source={{uri: item.image}} />
       <Text style={styles.title}>{item.title}</Text>
@@ -57,11 +61,10 @@ const TutorialScreen = () => {
     const nextIndex = currentIndex + 1;
     if (nextIndex < tutorialData.length) {
       if (flatListRef.current) {
-        flatListRef.current.scrollToIndex({ index: nextIndex });
+        flatListRef.current.scrollToIndex({index: nextIndex});
       }
       setCurrentIndex(nextIndex);
     } else {
-
       await AsyncStorage.setItem('hasSeenTutorial', 'true');
       navigation.reset({
         index: 0,
@@ -74,14 +77,13 @@ const TutorialScreen = () => {
 
   return (
     <View style={styles.container}>
-      <FlatList
+      <CustomFlatList
         ref={flatListRef}
         data={tutorialData}
+        renderItem={renderItem}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
-        renderItem={renderItem}
-        keyExtractor={item => item.key}
         onScroll={Animated.event(
           [{nativeEvent: {contentOffset: {x: scrollX}}}],
           {useNativeDriver: false},

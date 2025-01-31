@@ -1,24 +1,24 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
         padding: 20,
-        backgroundColor: '#fff'
+        backgroundColor: colors.white
       },
       darkContainer: {
-        backgroundColor:'#2d3040'
+        backgroundColor:colors.dark
       },
       settingItem: {
         marginBottom: 20,
-        shadowColor:'#ccc',
+        shadowColor:colors.lightGrey,
         padding:vh(10),
         elevation:vh(5),
         borderWidth:2,
         backgroundColor:colors.main,
-        borderColor:'#ccc',
+        borderColor:colors.lightGrey,
         borderRadius:vh(20)
       },
       label: {
@@ -51,7 +51,7 @@ export default StyleSheet.create({
         width: '100%',
       },
       cancelButton: {
-        backgroundColor: '#ccc',
+        backgroundColor: colors.lightGrey,
         padding: 10,
         flex: 1,
         marginRight: 10,

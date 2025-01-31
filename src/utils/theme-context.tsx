@@ -1,15 +1,21 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React, { createContext, useState, useEffect } from 'react';
+import React, {createContext, useState, useEffect, ReactNode} from 'react';
 
+type ThemeContextType = {
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+  setTheme: (theme: string) => void;
+};
 
-// Create a context for the theme
-export const ThemeContext = createContext();
+export const ThemeContext = createContext<ThemeContextType>({
+  isDarkMode: false,
+  toggleTheme: () => {},
+  setTheme: () => {},
+});
 
-// Theme provider component
-export const ThemeProvider = ({ children }) => {
+export const ThemeProvider = ({children}: {children: ReactNode}) => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
-  // Load the theme from AsyncStorage
   useEffect(() => {
     const loadTheme = async () => {
       try {
@@ -25,7 +31,6 @@ export const ThemeProvider = ({ children }) => {
     loadTheme();
   }, []);
 
-  
   const toggleTheme = async () => {
     try {
       const newTheme = !isDarkMode ? 'dark' : 'light';
@@ -37,8 +42,18 @@ export const ThemeProvider = ({ children }) => {
     }
   };
 
+  const setTheme = async (theme: string) => {
+    try {
+      console.log('Setting theme:', theme);
+      setIsDarkMode(theme === 'dark');
+      await AsyncStorage.setItem('theme', theme);
+    } catch (error) {
+      console.error('Error setting theme in AsyncStorage', error);
+    }
+  };
+
   return (
-    <ThemeContext.Provider value={{ isDarkMode, toggleTheme }}>
+    <ThemeContext.Provider value={{isDarkMode, toggleTheme, setTheme}}>
       {children}
     </ThemeContext.Provider>
   );

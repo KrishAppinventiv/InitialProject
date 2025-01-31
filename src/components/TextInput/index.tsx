@@ -11,7 +11,8 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import {ThemeContext} from '../../utils/theme-context';
-import { vh } from '../../theme/dimensions';
+import { vh } from '../../utils/dimension';
+import { colors } from '../../theme';
 
 interface InputFieldProps extends TextInputProps {
   style?: object;
@@ -33,6 +34,7 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
     onSubmitEditing,
     secureTextEntry,
     returnKeyType,
+    keyboardType,
     iconName,
     togglePasswordVisibility,
     rightIconName,
@@ -49,12 +51,12 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
 
   return (
     <View style={[styles.container, style]}>
-      {iconName && <MaterialIcons name={iconName} size={20} color={'#ccc'}  style={styles.iconLeft} />}
+      {iconName && <MaterialIcons name={iconName} size={20} color={colors.lightGrey}  style={styles.iconLeft} />}
 
       <Text
         style={[
           styles.floatingLabel,iconName && {marginLeft:vh(18)},
-          isDarkMode && {backgroundColor: '#2d3040'},
+          isDarkMode && {backgroundColor: colors.dark},
           placeholderTextStyle,
           isFocused || value
             ? styles.floatingLabelActive
@@ -67,6 +69,7 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
         ref={ref}
         style={[styles.input, textStyle,iconName && {marginLeft:vh(18)}]}
         value={value}
+        keyboardType={keyboardType}
         onFocus={handleFocus}
         onBlur={handleBlur}
         onChangeText={onChangeText}
@@ -86,8 +89,8 @@ const InputField = forwardRef<TextInput, InputFieldProps>((props, ref) => {
                   : 'visibility-off'
                 : rightIconName
             }
-            size={24}
-            color={!isDarkMode ? '#000' : '#ccc'}
+            size={20}
+            color={colors.lightGrey}
             style={styles.iconRight}
           />
         </TouchableOpacity>
@@ -101,14 +104,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderRadius: 8,
-   
   },
   input: {
     flex: 1,
     padding: 10,
     fontSize: 16,
+    height:vh(38)
   },
-
   iconRight: {
     marginLeft: 10,
   },
@@ -117,8 +119,8 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     left: 10,
     fontSize: 16,
-    color: '#ccc',
-    backgroundColor: '#ffffff',
+    color: colors.lightGrey,
+    backgroundColor: colors.white,
     paddingHorizontal: 5,
     zIndex: 1,
   },

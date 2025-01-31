@@ -1,4 +1,13 @@
-const tutorialData = [
+type Notification = {
+    head: string;
+    description: string;
+    time: number;
+    status: 'read' | 'unread';
+  };
+  
+
+
+export const tutorialData = [
     {
         key: '1',
         title: 'Manage Your Entire Production',
@@ -49,4 +58,92 @@ const tutorialData = [
     },
 ];
 
-export default tutorialData;
+
+export const priorityOptions = [
+    {
+      label: 'Standard',
+      value: 'standard',
+      parent: 'PSN-001',
+      skill: 'Basic',
+      associate: 'DA-1',
+    },
+    {
+      label: 'Express',
+      value: 'express',
+      parent: 'PSN-002',
+      skill: 'Intermediate',
+      associate: 'DA-2',
+    },
+    {
+      label: 'Overnight',
+      value: 'overnight',
+      parent: 'PSN-003',
+      skill: 'Advanced',
+      associate: 'DA-3',
+    },
+  ];
+
+
+  export const notifyData: Notification[] = [
+    {
+      head: 'Order Confirmed!',
+      description: 'Your order #123456 has been successfully placed and is being processed.',
+      time: 5,
+      status: 'unread'
+    },
+    {
+      head: 'Shipped!',
+      description: 'Your order #123456 has been shipped. Track your shipment for real-time updates.',
+      time: 15,
+      status: 'unread'
+    },
+    {
+      head: 'Out for Delivery!',
+      description: 'Your package #123456 is out for delivery. Expect it to arrive today.',
+      time: 30,
+      status: 'read'
+    },
+    {
+      head: 'Delivered!',
+      description: 'Your package #123456 has been delivered. We hope you enjoy your purchase!',
+      time: 120,
+      status: 'read'
+    },
+    {
+      head: 'Delivery Delayed',
+      description: 'Your package #123456 is delayed due to weather conditions. We’ll update you soon.',
+      time: 60,
+      status: 'read'
+    },
+    {
+      head: 'Pickup Reminder',
+      description: 'Your package #123456 is ready for pickup at the nearest service center.',
+      time: 10,
+      status: 'unread'
+    },
+    {
+      head: 'Track Your Shipment',
+      description: 'Easily track your order #123456 from the “My Orders” section in the app.',
+      time: 20,
+      status: 'read'
+    },
+    {
+      head: 'Special Offer!',
+      description: 'Get free shipping on your next order. Use code FREESHIP at checkout!',
+      time: 45,
+      status: 'unread'
+    },
+    {
+      head: 'Address Confirmation',
+      description: 'Please confirm your delivery address for order #123456 to avoid delays.',
+      time: 25,
+      status: 'unread'
+    },
+    {
+      head: 'Shipment Update',
+      description: 'Your package #123456 has been sorted at the distribution center and is on its way.',
+      time: 35,
+      status: 'read'
+    },
+  ];
+  

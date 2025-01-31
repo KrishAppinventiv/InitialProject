@@ -1,26 +1,24 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-  TextInput,
-} from 'react-native';
+// Library Imports
 import React, {useContext, useEffect, useRef, useState} from 'react';
-import {vh} from '../../theme/dimensions';
-import InputField from '../../components/TextInput';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import CheckBox from 'react-native-check-box';
-import {colors} from '../../theme';
-import {ThemeContext} from '../../utils/theme-context';
+import {KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import styles from './styles';
+import CheckBox from 'react-native-check-box';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import { endEvent } from 'react-native/Libraries/Performance/Systrace';
+
+// Custom Imports
+import InputField from '../../components/TextInput';
+
+// Utility Imports
+import {ThemeContext} from '../../utils/theme-context';
+import {validateField} from '../../utils/commonfunction';
+
+// Style Imports
+import styles from './styles';
+import { colors } from '../../theme';
 
 const CompletionDetails = () => {
   const [isWhatsAppOptIn, setIsWhatsAppOptIn] = useState(false);
-  const {isDarkMode, toggleTheme} = useContext(ThemeContext);
+  const {isDarkMode} = useContext(ThemeContext);
   const [email, setEmail] = useState('');
   const [contactNumber, setContactNumber] = useState('');
   const [addressID, setAddressID] = useState('');
@@ -71,23 +69,6 @@ const CompletionDetails = () => {
     }
     setEmailError('');
     return true;
-  };
-
-  const validateField = (
-    value: string,
-    setError: (msg: string) => void,
-    fieldName: string,
-  ) => {
-    if (!value.trim()) {
-      setError(`${fieldName} is required`);
-      return false;
-    }
-    setError('');
-    return true;
-  };
-
-  const handleNext = () => {
-    console.log('Next button clicked');
   };
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;
   return (
@@ -145,7 +126,7 @@ const CompletionDetails = () => {
       {addressIDError && <Text style={styles.errorText}>{addressIDError}</Text>}
 
       <InputField
-         ref={startTimeRef}
+        ref={startTimeRef}
         placeholder={t('screens.completion.startTime')}
         value={startTime}
         onRightIconPress={() => setOpenStartTime(true)}
@@ -248,7 +229,7 @@ const CompletionDetails = () => {
         <CheckBox
           isChecked={isWhatsAppOptIn}
           onClick={() => toggleWhatsAppOptIn()}
-          checkBoxColor={isWhatsAppOptIn ? '#000' : '#4C4C6D'}
+          checkBoxColor={isWhatsAppOptIn ? colors.black : colors.purpleShade}
           checkedImage={
             <View style={styles.checkedBox}>
               <Text style={styles.tick}>✓</Text>
@@ -258,12 +239,14 @@ const CompletionDetails = () => {
         <Text
           style={[
             styles.checkboxLabel,
-            {color: isDarkMode ? 'ffffff' : '#000'},
+            {color: isDarkMode ? colors.white : colors.black},
           ]}>
           {' '}
           {t('screens.completion.whatsappOptIn')}
         </Text>
       </View>
+
+      
 
       <DateTimePickerModal
         isVisible={openStartTime}
@@ -293,6 +276,7 @@ const CompletionDetails = () => {
         onCancel={() => setOpenEndTime(false)}
       />
     </ScrollView>
+    
   );
 };
 

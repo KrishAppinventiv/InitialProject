@@ -1,32 +1,36 @@
+// Library Imports
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
-  Image,
   ImageBackground,
-  StyleSheet,
+  KeyboardAvoidingView,
+  Platform,
   Text,
   TextInput,
   TouchableOpacity,
   View,
-  Platform,
-  KeyboardAvoidingView,
-  useColorScheme,
 } from 'react-native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
+import { CountryPicker } from 'react-native-country-codes-picker';
 import Icon from 'react-native-vector-icons/Feather';
-import {useNavigation} from '@react-navigation/native';
-import Toast from 'react-native-toast-message';
-import {Images} from '../../assets';
-import {vh, vw} from '../../theme/dimensions';
-import {CountryPicker} from 'react-native-country-codes-picker';
-import Button from '../../components/Button';
 
-import styles from './styles';
-import {colors} from '../../theme';
-import {showToast} from '../../components/CustomToast';
-import { useTranslation } from 'react-i18next';
+// Asset Imports
+import { Images } from '../../assets';
+
+// Custom Imports
+import Button from '../../components/Button';
+import { showToast } from '../../components/CustomToast';
+
+// Utility Imports
+import { colors } from '../../theme';
+import { vh, vw } from '../../utils/dimension';
+import { ScreenNames } from '../../utils/screenNames';
 import { ThemeContext } from '../../utils/theme-context';
 import { RootStackParamList } from '../../utils/types';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { ScreenNames } from '../../utils/screenNames';
+
+// Style Imports
+import styles from './styles';
 type SignupScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   ScreenNames.Signup
@@ -36,11 +40,10 @@ const Login = () => {
   const [Phone, SetPhone] = useState('');
   const [show, setShow] = useState(false);
   const [flag, setflag] = useState('');
-  const [isFocused, setIsFocused] = useState(false);
   const navigation = useNavigation<SignupScreenNavigationProp>();
   const { t } = useTranslation();
   const [errorVisible, setErrorVisible] = useState(false);
-  const { isDarkMode, toggleTheme } = useContext(ThemeContext); 
+  const { isDarkMode} = useContext(ThemeContext); 
   const numberRef = useRef<TextInput | null>(null);
  
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;    
@@ -81,8 +84,8 @@ const Login = () => {
     ? 'red'
     : Phone
     ? colors.main
-    : '#E8E8E8';
-  const buttonColor = Phone ? colors.main : '#E8E8E8';
+    : colors.thinerGrey;
+  const buttonColor = Phone ? colors.main : colors.thinerGrey;
   const buttonDisabled = !Phone;
 
   return (
@@ -93,17 +96,17 @@ const Login = () => {
         <ImageBackground source={Images.tutorial} style={styles.ImgBg}>
           <View style={[styles.modalView,themeStyles]}>
             <View style={styles.headView}>
-              <Text style={[styles.wlcmText,{color:isDarkMode?'#ffffff':'#000'}]}>{t('screens.login.text.welcomeMessage')}</Text>
-              <Text style={[styles.grey,isDarkMode && {color:'#ccc'}]}>
+              <Text style={[styles.wlcmText,{color:isDarkMode?colors.white:colors.black}]}>{t('screens.login.text.welcomeMessage')}</Text>
+              <Text style={[styles.grey,isDarkMode && {color:colors.lightGrey}]}>
               {t('screens.login.text.instruction')}
               </Text>
               <View
                 style={[styles.numberView, {borderColor: inputBorderColor}]}>
-                <Icon name="phone" size={20} color={'#ccc'} />
+                <Icon name="phone" size={20} color={colors.lightGrey} />
                 <Text
                   style={{
                     marginStart: vw(4),
-                    color: '#F0F0F0',
+                    color: colors.lighterGrey,
                     fontSize: vh(17),
                   }}>
                   |
@@ -142,12 +145,10 @@ const Login = () => {
                   <View style={styles.numberContain}>
                     <TextInput
                       placeholder="Mobile Number"
-                      placeholderTextColor={'#ccc'}
+                      placeholderTextColor={colors.lightGrey}
                       style={styles.input}
                       value={Phone}
                       onChangeText={text => SetPhone(text)}
-                      onFocus={() => setIsFocused(true)}
-                      onBlur={() => setIsFocused(false)}
                       keyboardType="numeric"
                       ref={numberRef}
                     />
@@ -163,7 +164,7 @@ const Login = () => {
             />
 
             <View style={styles.dontView}>
-              <Text style={{color:isDarkMode?'#ffffff':'#000'}}>{t('screens.login.text.dontHaveAccount')}</Text>
+              <Text style={{color:isDarkMode?colors.white:colors.black}}>{t('screens.login.text.dontHaveAccount')}</Text>
               <TouchableOpacity
                 onPress={() => {
                   navigation.navigate(ScreenNames.Signup);

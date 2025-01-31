@@ -1,32 +1,25 @@
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  TextInput,
-  Image,
-  Alert,
-  SafeAreaView,
-  ScrollView,
-  Modal,
+// Library Imports
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import {KeyboardAvoidingView,Platform, SafeAreaView,ScrollView,Text,TextInput,TouchableOpacity,View,
 } from 'react-native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {ScreenNames} from '../../utils/screenNames';
-import InputField from '../../components/TextInput';
-import styles from './styles';
-import {NativeStackNavigationProp} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../utils/types';
-import {colors} from '../../theme';
-import {Calendar} from 'react-native-calendars';
-import moment from 'moment';
-import Button from '../../components/Button';
-
-import {showToast} from '../../components/CustomToast';
-import CustomModal from '../../components/CustomModal';
-import CustomCalendar from '../../components/CustomCalendar';
-import {ThemeContext} from '../../utils/theme-context';
 import DatePicker from 'react-native-date-picker';
+
+// Custom Imports
+import Button from '../../components/Button';
+import InputField from '../../components/TextInput';
+import CustomModal from '../../components/CustomModal';
+import { showToast } from '../../components/CustomToast';
+
+// Utility Imports
+import { colors } from '../../theme';
+import { ScreenNames } from '../../utils/screenNames';
+import { RootStackParamList } from '../../utils/types';
+import { ThemeContext } from '../../utils/theme-context';
+
+// Style Imports
+import styles from './styles';
 type SignupScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   ScreenNames.Signup
@@ -57,10 +50,8 @@ const Signup = () => {
   const birthInputRef = useRef<TextInput | null>(null);
   const confrmpasswordInputRef = useRef<TextInput | null>(null);
   const passwordInputRef = useRef<TextInput | null>(null);
-  type ErrorState = string;
   type FormFieldState = string;
-  const {isDarkMode, toggleTheme} = useContext(ThemeContext);
-
+  const {isDarkMode} = useContext(ThemeContext);
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;
 
   const validateEmail = (email: string): boolean => {
@@ -85,8 +76,7 @@ const Signup = () => {
     setBirthError(null);
     return true;
   };
-  
-  
+   
   useEffect(() => {
     setTimeout(() => {
       nameInputRef.current?.focus();
@@ -96,7 +86,7 @@ const Signup = () => {
   const buttonColor =
     Name && Email && Password && birthday && CnfrmPassword && Phone
       ? colors.main
-      : '#E8E8E8';
+      : colors.thinerGrey;
   const buttonDisabled = !(
     Name &&
     Email &&
@@ -180,18 +170,22 @@ const Signup = () => {
   };
 
   return (
+   
     <SafeAreaView style={[styles.container, themeStyles]}>
+       <KeyboardAvoidingView
+    behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    style={{flex: 1}}>
       <ScrollView
         style={styles.signupContainer}
         showsVerticalScrollIndicator={false}>
         <View style={styles.textContain}>
           <Text
-            style={[styles.signText, {color: isDarkMode ? '#ffffff' : '#000'}]}>
+            style={[styles.signText, {color: isDarkMode ? colors.white : colors.black}]}>
             Hello!
           </Text>
 
           <Text
-            style={[styles.welText, {color: isDarkMode ? '#ffffff' : '#000'}]}>
+            style={[styles.welText, {color: isDarkMode ? colors.white : colors.black}]}>
             Sign up to get Started
           </Text>
         </View>
@@ -219,6 +213,7 @@ const Signup = () => {
             ref={phoneInputRef}
             placeholder="Phone No."
             value={Phone}
+            keyboardType={'numeric'}
             textStyle={isDarkMode ? styles.white : styles.black}
             onChangeText={text => {
               SetPhone(text)
@@ -227,7 +222,7 @@ const Signup = () => {
             returnKeyType="next"
             onSubmitEditing={() => {
               validatePhoneNumber(Phone);
-              birthInputRef.current?.focus();
+              setModalVisible(true)
             }}
             style={[styles.inputField, phoneError ? {borderColor: 'red'} : {}]}
             iconName="phone"
@@ -265,6 +260,7 @@ const Signup = () => {
               validateEmail(text)
             }}
             returnKeyType="next"
+            
             onSubmitEditing={() => {
               validateEmail(Email);
               passwordInputRef.current?.focus();
@@ -282,6 +278,7 @@ const Signup = () => {
               SetPassword(text)
               validatePassword(text)
             }}
+            rightIconName='yes'
             returnKeyType="next"
             onSubmitEditing={() => {
               validatePassword(Password);
@@ -308,6 +305,7 @@ const Signup = () => {
               SetCnfrmPassword(text)
               validateConfirmPassword(Password,text)
             }}
+            rightIconName='yes'
             returnKeyType="next"
             onSubmitEditing={() => {
               validateConfirmPassword(Password, CnfrmPassword);
@@ -341,7 +339,7 @@ const Signup = () => {
         </View>
 
         <View style={styles.already}>
-          <Text style={{color: isDarkMode ? '#ffffff' : '#000'}}>
+          <Text style={{color: isDarkMode ? colors.white : colors.black}}>
             Already have an account?
           </Text>
           <TouchableOpacity
@@ -364,12 +362,15 @@ const Signup = () => {
               setBirthday(date.toISOString().split('T')[0]); // Format YYYY-MM-DD
               setBirthError('')
               setModalVisible(false);
+              emailInputRef.current?.focus();
             }}
             onCancel={() => setModalVisible(false)}
           />
         </CustomModal>
       </ScrollView>
+      </KeyboardAvoidingView>
     </SafeAreaView>
+   
   );
 };
 

@@ -1,25 +1,34 @@
+// Library Imports
+import { Picker } from '@react-native-picker/picker';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
   ScrollView,
-  StyleSheet,
   Switch,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import InputField from '../../components/TextInput';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {vh} from '../../theme/dimensions';
-import {ThemeContext} from '../../utils/theme-context';
-import {colors} from '../../theme';
-import styles from './styles';
-import {useTranslation} from 'react-i18next';
-import {Picker} from '@react-native-picker/picker';
+
+// Custom Imports
 import CustomModal from '../../components/CustomModal';
+import InputField from '../../components/TextInput';
+
+// Utility Imports
+import { ThemeContext } from '../../utils/theme-context';
+import { priorityOptions } from '../../utils/constant';
+import { vh } from '../../utils/dimension';
+import { validateShipment } from '../../utils/commonfunction';
+
+// Style Imports
+import styles from './styles';
+import { colors } from '../../theme';
+
+// Rest of the component code...
 
 const Shipment1Detail = () => {
-  const {isDarkMode, toggleTheme} = useContext(ThemeContext);
+  const {isDarkMode} = useContext(ThemeContext);
   const {t} = useTranslation();
   const [shipmentNumber, setShipmentNumber] = useState('');
   const [shipmentDateTimezone, setShipmentDateTimezone] = useState('');
@@ -59,55 +68,18 @@ const Shipment1Detail = () => {
     }, 100);
   }, []);
 
-  const priorityOptions = [
-    {
-      label: 'Standard',
-      value: 'standard',
-      parent: 'PSN-001',
-      skill: 'Basic',
-      associate: 'DA-1',
-    },
-    {
-      label: 'Express',
-      value: 'express',
-      parent: 'PSN-002',
-      skill: 'Intermediate',
-      associate: 'DA-2',
-    },
-    {
-      label: 'Overnight',
-      value: 'overnight',
-      parent: 'PSN-003',
-      skill: 'Advanced',
-      associate: 'DA-3',
-    },
-  ];
 
   const handleSelect = (selectedValue: string) => {
     const selectedOption = priorityOptions.find(
       option => option.value === selectedValue,
     );
-
     if (selectedOption) {
       setPriority(selectedOption.value);
       setParentShipmentNumber(selectedOption.parent);
       setSkillSet(selectedOption.skill);
       setDeliveryAssociates(selectedOption.associate);
     }
-
     setPickerVisible(false);
-  };
-  const validateField = (
-    value: string,
-    setError: (msg: string) => void,
-    fieldName: string,
-  ) => {
-    if (!value.trim()) {
-      setError(`${fieldName} is required`);
-      return false;
-    }
-    setError('');
-    return true;
   };
   const themeStyles = isDarkMode ? styles.darkMode : styles.lightMode;
 
@@ -123,7 +95,7 @@ const Shipment1Detail = () => {
           onSubmitEditing={() => shipmentDateTimezoneRef.current?.focus()}
           onChangeText={text => {
             setShipmentNumber(text);
-            validateField(text, setShipmentNumberError, 'Shipment Number');
+            validateShipment(text, setShipmentNumberError, 'Shipment Number');
           }}
           style={[
             styles.inputField,
@@ -143,7 +115,7 @@ const Shipment1Detail = () => {
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             setShipmentDateTimezone(text);
-            validateField(
+            validateShipment(
               text,
               setShipmentDateTimezoneError,
               'Shipment Date Timezone',
@@ -164,7 +136,7 @@ const Shipment1Detail = () => {
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             setShipmentDate(text);
-            validateField(text, setShipmentDateError, 'Shipment Date');
+            validateShipment(text, setShipmentDateError, 'Shipment Date');
           }}
           onSubmitEditing={() => priorityRef.current?.focus()}
           style={[
@@ -186,7 +158,7 @@ const Shipment1Detail = () => {
           onSubmitEditing={() => serviceTimeRef.current?.focus()}
           onChangeText={text => {
             setPriority(text);
-            validateField(text, setPriorityError, 'Priority');
+            validateShipment(text, setPriorityError, 'Priority');
           }}
           style={[styles.inputField, priorityError ? styles.errorBorder : {}]}
         />
@@ -217,7 +189,7 @@ const Shipment1Detail = () => {
           <Text
             style={[
               styles.toggleLabel,
-              {color: isDarkMode ? '#ffffff' : '#000'},
+              {color: isDarkMode ? colors.white : colors.black},
             ]}>
             {t('screens.shipmentDetail.partialDelivery')}
           </Text>
@@ -228,7 +200,7 @@ const Shipment1Detail = () => {
           <Text
             style={[
               styles.toggleLabel,
-              {color: isDarkMode ? '#ffffff' : '#000'},
+              {color: isDarkMode ? colors.white : colors.black},
             ]}>
             {t('screens.shipmentDetail.salesReturn')}
           </Text>
@@ -239,7 +211,7 @@ const Shipment1Detail = () => {
           <Text
             style={[
               styles.toggleLabel,
-              {color: isDarkMode ? '#ffffff' : '#000'},
+              {color: isDarkMode ? colors.white : colors.black},
             ]}>
             {t('screens.shipmentDetail.shipmentCancellation')}
           </Text>
@@ -256,7 +228,7 @@ const Shipment1Detail = () => {
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             setServiceTime(text);
-            validateField(text, setServiceTimeError, 'Service Time');
+            validateShipment(text, setServiceTimeError, 'Service Time');
           }}
           onSubmitEditing={() => autoAllocateProfileNameRef.current?.focus()}
           style={[
@@ -276,7 +248,7 @@ const Shipment1Detail = () => {
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             setAutoAllocateProfileName(text);
-            validateField(
+            validateShipment(
               text,
               setAutoAllocateProfileNameError,
               'AutoAllocate Profile Name',
@@ -298,7 +270,7 @@ const Shipment1Detail = () => {
           textStyle={isDarkMode ? styles.white : styles.black}
           onChangeText={text => {
             setServiceType(text);
-            validateField(text, setServiceTypeError, 'Service Type');
+            validateShipment(text, setServiceTypeError, 'Service Type');
           }}
           style={[
             styles.inputField,
@@ -311,12 +283,12 @@ const Shipment1Detail = () => {
 
         <CustomModal modalVisible={isPickerVisible} setModalVisible={setPickerVisible}>
         <View style={[styles.modalContent, isDarkMode?styles.lightMode:styles.darkMode]}>
-          <Text style={[styles.modalTitle, {color:isDarkMode?'#000':'#ffffff'}]}>Select Priority</Text>
+          <Text style={[styles.modalTitle, {color:isDarkMode?colors.black:colors.white}]}>Select Priority</Text>
           <Picker 
              
             selectedValue={priority}
             onValueChange={(itemValue) => handleSelect(itemValue)}
-            style={[styles.picker,{color:isDarkMode?'#000':'#ffffff'}]}
+            style={[styles.picker,{color:isDarkMode?colors.black:colors.white}]}
           >
             {priorityOptions.map((option) => (
               <Picker.Item key={option.value} label={option.label} value={option.value}/>

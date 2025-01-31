@@ -1,17 +1,13 @@
 import {Platform, StyleSheet} from 'react-native';
 import { colors } from '../../theme';
-import { vh, vw } from '../../theme/dimensions';
-
-
-
+import { vh, vw } from '../../utils/dimension';
 export default StyleSheet.create({
     head: {
-        color: '#ffffff',
+        color: colors.white,
         fontSize: vh(15),
         fontWeight: '500'
       },
       container: {
-       
         flex: 1,
         padding: vh(10)
       },
@@ -21,7 +17,7 @@ export default StyleSheet.create({
       leftText: {
         marginLeft: 10,
         fontSize: vh(13),
-        color: '#ffffff',
+        color: colors.white,
         fontWeight: '500',
       },
       checkedText: {
@@ -37,7 +33,7 @@ export default StyleSheet.create({
         borderRadius: 5,
       },
       tick: {
-        color: '#fff',
+        color: colors.white,
         fontSize: 18,
         fontWeight: 'bold',
       },
@@ -45,8 +41,8 @@ export default StyleSheet.create({
         width: 24,
         height: 24,
         borderWidth: 2,
-        borderColor: '#A8A8A8',
-        backgroundColor: '#fff',
+        borderColor: colors.grey,
+        backgroundColor: colors.white,
         borderRadius: 5,
       },
       item: {
@@ -81,7 +77,7 @@ export default StyleSheet.create({
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
       },
       
 })

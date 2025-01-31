@@ -1,6 +1,6 @@
-import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
-import {colors} from '../../theme';
+import { StyleSheet } from 'react-native';
+import { vh, vw } from '../../utils/dimension';
+import { colors } from '../../theme';
 
 export default StyleSheet.create({
   topView: {
@@ -9,7 +9,6 @@ export default StyleSheet.create({
   banner: {
     height: '100%',
     width: '100%',
-
     borderBottomStartRadius: vh(15),
     borderBottomEndRadius: vh(15),
   },
@@ -18,16 +17,9 @@ export default StyleSheet.create({
     width: '100%',
     position: 'absolute',
     backgroundColor: 'rgba(0,0,0,.4)',
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    
-    // borderBottomStartRadius: vh(15),
-    // borderBottomEndRadius: vh(15),
   },
   searchBox: {
-    
     paddingVertical:vh(10),
-
     backgroundColor: 'white',
     borderRadius: 8,
     flexDirection: 'row',
@@ -38,24 +30,18 @@ export default StyleSheet.create({
   placeholder: {
     marginLeft: 15,
     fontSize: vh(16),
-    color: '#9e9e9e',
+    color:colors.darkGrey
   },
   logo: {
     fontSize: vh(30),
     color: 'white',
-    // position: 'absolute',
-    // top: 60,
-    // left: 20,
     marginTop:vh(35),
     fontFamily: 'Poppins',
     fontWeight: '600',
   },
   cookText: {
     fontSize: vh(20),
-    color: '#E6E6E6',
-    // position: 'absolute',
-    // top: 95,
-    // left: 20,
+    color: colors.lightGrey,
     fontWeight: '500',
   },
   searchRecipe: {
@@ -74,7 +60,7 @@ export default StyleSheet.create({
     marginHorizontal:vw(15)
   },
   darkContainer: {
-   backgroundColor:'#2d3040'
+   backgroundColor:colors.dark
   },
   
     

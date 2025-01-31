@@ -1,18 +1,19 @@
 import {StyleSheet} from 'react-native';
-import {vh, vw} from '../../theme/dimensions';
+
 import {colors} from '../../theme';
+import { vh, vw } from '../../utils/dimension';
 
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
         padding: vh(14)
         
       },
       heading: {
         fontSize: 18,
         fontWeight: 'bold',
-        color: '#FFFFFF',
+        color: colors.white,
         marginBottom: 20
       },
       inputField: {
@@ -21,7 +22,7 @@ export default StyleSheet.create({
         marginVertical: 8,
         borderRadius: 8,
         borderWidth: 2,
-        borderColor: '#4C4C6D'
+        borderColor: colors.purpleShade
       },
       attachContainer: {
         flexDirection: 'row',
@@ -29,13 +30,13 @@ export default StyleSheet.create({
         marginVertical: 8
       },
       attachButton: {
-        backgroundColor: '#4C516D',
+        backgroundColor: colors.lightPurple,
         padding: 12,
         borderRadius: 8,
         marginLeft: 8
       },
       nextButton: {
-        backgroundColor: '#72A0C1',
+        backgroundColor: colors.main,
         padding: 16,
         borderRadius: 8,
         alignItems: 'center',
@@ -44,7 +45,7 @@ export default StyleSheet.create({
       nextButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
-        color: '#FFFFFF'
+        color:colors.white
       },
       toggleContainer: {
         flexDirection: 'row',
@@ -53,7 +54,7 @@ export default StyleSheet.create({
         marginVertical: 8
     },
     toggleLabel: {
-        color: '#FFFFFF',
+        color:colors.white,
         fontSize: 16,
         fontWeight:'600'
     
@@ -61,25 +62,25 @@ export default StyleSheet.create({
     errorText: { color: 'red', fontSize: 12, marginBottom: 10 },
       errorBorder: { borderColor: 'red' },
       white:{
-        color:'#ffffff'
+        color:colors.white
       },
       lightMode:{
         backgroundColor:colors.white
       },
       darkMode:{
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
       },
       black:{
-        color:'#000'
+        color:colors.black
         },
         modalContent: {
             width: '80%',
-            backgroundColor: '#fff',
+            backgroundColor: colors.white,
             padding: 20,
             borderRadius: 10,
             alignItems: 'center',
             justifyContent: 'center',
-            shadowColor: '#000',
+            shadowColor: colors.black,
             shadowOffset: { width: 0, height: 2 },
             shadowOpacity: 0.25,
             shadowRadius: 4,
@@ -89,17 +90,17 @@ export default StyleSheet.create({
             fontSize: 18,
             fontWeight: 'bold',
             marginBottom: 15,
-            color: '#333',
+            color: colors.black
           },
           closeButton: {
             marginTop: 20,
-            backgroundColor: '#007bff',
+            backgroundColor: colors.lighterBlue,
             paddingVertical: 10,
             paddingHorizontal: 20,
             borderRadius: 5,
           },
           closeButtonText: {
-            color: '#fff',
+            color: colors.white,
             fontSize: 16,
             fontWeight: '600',
           },

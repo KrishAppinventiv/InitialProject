@@ -28,16 +28,16 @@ const resources = {
     },
 };
 
+
+
 i18n.use(initReactI18next).init({
     resources,
-    compatibilityJSON: 'v3',
-   
+    compatibilityJSON: 'v4',
     fallbackLng: "en",
     interpolation: {
         escapeValue: false,
     },
-
-    forceRender: true,
+    
 });
 
 
@@ -57,8 +57,8 @@ const loadLanguage = async () => {
     }
   };
   
-  // Change language function
-  export const changeLanguage = async (langCode) => {
+ 
+  export const changeLanguage = async (langCode: string): Promise<void> => {
     try {
       await AsyncStorage.setItem('selectedLanguage', langCode);
       await i18n.changeLanguage(langCode);
@@ -69,13 +69,13 @@ const loadLanguage = async () => {
         I18nManager.forceRTL(false);
       }
   
-      RNRestart.Restart(); // Restart app for layout changes
+      RNRestart.Restart(); 
     } catch (error) {
       console.error('Error changing language:', error);
     }
   };
   
-  // Call loadLanguage when the app starts
+  
   loadLanguage();
   
 export default i18n;

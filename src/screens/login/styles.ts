@@ -1,6 +1,7 @@
 import {Platform, StyleSheet} from 'react-native';
 import { colors } from '../../theme';
-import { vh, vw } from '../../theme/dimensions';
+import { vh, vw } from '../../utils/dimension';
+
 
 
 
@@ -32,7 +33,7 @@ export default StyleSheet.create({
         flexDirection: 'row',
         borderRadius: vh(10),
         borderWidth: 2,
-        borderColor: '#E8E8E8',
+        borderColor: colors.thinerGrey,
         alignItems: 'center',
         paddingHorizontal: vh(20),
       
@@ -83,7 +84,7 @@ export default StyleSheet.create({
         marginHorizontal: vh(40),
         borderRadius: vh(10),
         marginBottom: vh(10),
-        shadowColor: '#F0F0F0',
+        shadowColor: colors.lighterGrey,
         shadowOpacity: 5,
         shadowRadius: 3,
         elevation: 2,
@@ -104,7 +105,7 @@ export default StyleSheet.create({
         color: colors.main,
       },
       darkMode:{
-        backgroundColor: '#2d3040',
+        backgroundColor: colors.dark,
       },
       lightMode:{
         backgroundColor:colors.white
@@ -119,7 +120,7 @@ export default StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row',
-        shadowColor: '#C3C3C3',
+        shadowColor: colors.thickGrey,
         shadowOpacity: 5,
         shadowRadius: 3,
         backgroundColor: 'white',

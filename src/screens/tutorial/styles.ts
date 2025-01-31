@@ -1,8 +1,9 @@
 import { StyleSheet, Dimensions } from 'react-native';
+import { colors } from '../../theme';
 const { width } = Dimensions.get('window');
 
 const styles = StyleSheet.create({
-    container: { flex: 1, backgroundColor: '#fff',},
+    container: { flex: 1, backgroundColor: colors.white,},
     slide: { width},
     image: { width: '100%', flex:.8 },
     title: { fontSize: 24, fontWeight: 'bold', textAlign: 'center', marginTop: 20 },
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
         width: 10,
         height: 10,
         borderRadius: 5,
-        backgroundColor: '#888',
+        backgroundColor: colors.darkGrey,
         marginHorizontal: 5,
     },
     bottomContainer: {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
         borderWidth: 3,
-        borderColor: '#f00',
+        borderColor: colors.red,
         borderRadius: 25,
     },
     arrowContainer: {
