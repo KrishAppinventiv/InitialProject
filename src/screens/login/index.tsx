@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { CountryPicker } from 'react-native-country-codes-picker';
 import Icon from 'react-native-vector-icons/Feather';
-
+import CustomButton from '@krishna_gupta/custom-button'
 // Asset Imports
 import { Images } from '../../assets';
 
@@ -156,12 +156,18 @@ const Login = () => {
                 </View>
               </View>
             </View>
-            <Button
+            {/* <Button
               onPress={handleSubmit}
               style={[styles.touch, {backgroundColor: buttonColor}]}
               disabled={buttonDisabled}
               text={t('screens.login.text.next')}
-            />
+            /> */}
+
+            <CustomButton
+              onPress={handleSubmit}
+              style={[styles.touch, { backgroundColor: buttonColor }]}
+              disabled={buttonDisabled} text={'Test'}
+              />
 
             <View style={styles.dontView}>
               <Text style={{color:isDarkMode?colors.white:colors.black}}>{t('screens.login.text.dontHaveAccount')}</Text>

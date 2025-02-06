@@ -14,14 +14,21 @@ import PostFeed from '../../components/Post';
 // Style Imports
 import styles from './styles';
 import { colors } from '../../theme';
+import { ScreenNames } from '../../utils/screenNames';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../../utils/types';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-
+type SignupScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  ScreenNames.Home
+>;
 
 const Home = () => {
   const {fontSizes} = useContext(FontSizeContext);
   const name = 'Krishna Gupta';
   const {isDarkMode} = useContext(ThemeContext);
-  
+  const navigation = useNavigation<SignupScreenNavigationProp>();
   return (
     <View style={[styles.container, isDarkMode && styles.darkContainer]}>
       <StatusBar barStyle={'light-content'} />

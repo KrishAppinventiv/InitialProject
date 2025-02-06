@@ -1,36 +1,51 @@
-// Library Imports
-import React, { useContext } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Image, SafeAreaView, Text, View } from 'react-native';
 
-// Asset Imports
-import { Images } from '../../assets';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Dimensions,
+} from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import QRScanner from "../../services/scanner";
+import styles from "./styles";
+const dWidth = Dimensions.get("window").width;
 
-// Utility Imports
-import { ThemeContext } from '../../utils/theme-context';
+const clr1 = "mediumseagreen";
 
-// Style Imports
-import styles from './styles';
-import { colors } from '../../theme';
+const Scan = () => {
+  const [showQR, setShowQR] = useState(false);
+  const [qrCode, setQrCode] = useState("");
 
-const Save = () => {
-  const {isDarkMode} = useContext(ThemeContext);
-  const {t} = useTranslation();
+  const openQRscanner = () => {
+    setShowQR(true);
+  };
+
+  const onQrRead = (qrtext: string | null | undefined) => {
+    setQrCode(qrtext as string);
+    setShowQR(false);
+  };
+
   return (
-    <SafeAreaView
-      style={[styles.container, isDarkMode && styles.darkContainer]}>
-      <View style={styles.head}>
-        <Text
-          style={[styles.heading, {color: isDarkMode ? colors.white : colors.black}]}>
-          {t('screens.saveScreen.heading')}
+    <View style={styles.page}>
+      {qrCode ? (
+        <Text style={{ fontSize: 16, color: "black" }}>
+          {"QR Value \n" + qrCode}
         </Text>
-      </View>
-      <View style={styles.savedView}>
-        <Image source={Images.bookmark} style={styles.saveImg} />
-        <Text style={styles.empty}>{t('screens.saveScreen.emptyMessage')}</Text>
-      </View>
-    </SafeAreaView>
+      ) : null}
+      <Ionicons
+        name={"scan-circle-outline"}
+        size={qrCode ? dWidth * 0.4 : dWidth * 0.75}
+        color={clr1}
+      />
+      <TouchableOpacity onPress={() => openQRscanner()} style={styles.btn}>
+        <Text style={{ color: clr1 }}>Scan QR</Text>
+      </TouchableOpacity>
+      {showQR ? <QRScanner onRead={onQrRead} /> : null}
+    </View>
   );
 };
 
-export default Save;
+export default Scan;
+

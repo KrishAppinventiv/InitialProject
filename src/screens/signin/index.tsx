@@ -69,7 +69,7 @@ const Signin = () => {
   useEffect(() => {
 
     try {
-      console.log(GoogleSignin);
+     
       GoogleSignin.configure({
         webClientId:
           GOOGLE_WEB_CLIENT_ID,
@@ -79,7 +79,7 @@ const Signin = () => {
       });
      
     } catch (error) {
-      console.error('Error configuring Google SignIn:', error);
+     
     }
 
     setTimeout(() => {
@@ -111,7 +111,7 @@ const Signin = () => {
       SetEmailReset('');
       showToast('success', 'Reset email sent successfully!');
     } catch (error) {
-      console.log(error);
+      
       setTimeout(() => {
         setModalVisible(false);
         SetEmailReset('');

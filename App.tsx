@@ -1,12 +1,11 @@
-import { StyleSheet, Text, View, Modal, ActivityIndicator } from 'react-native';
-import React, { useEffect, useState } from 'react';
-import RootNavigator from './src/navigator';
-import { ThemeProvider } from './src/utils/theme-context';
-import Toast from 'react-native-toast-message';
-import { FontSizeProvider } from './src/utils/FontSizeContext';
 import NetInfo from '@react-native-community/netinfo';
-import Button from './src/components/Button';
+import React, { useEffect, useState } from 'react';
+import { ActivityIndicator, Modal, StyleSheet, Text, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import RootNavigator from './src/navigator';
+import { FontSizeProvider } from './src/utils/FontSizeContext';
+import { ThemeProvider } from './src/utils/theme-context';
 
 const App = () => {
   const [isConnected, setIsConnected] = useState(true);
@@ -14,8 +13,7 @@ const App = () => {
 
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
-      console.log("Internet connection status changed:", state.isConnected);
-      console.log("Internet reachable status changed:", state.isInternetReachable);
+      
   
       const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
       setIsConnected(connected);
@@ -24,8 +22,7 @@ const App = () => {
   
     // Fetch initial network status
     NetInfo.fetch().then(state => {
-      console.log("Initial connection status:", state.isConnected);
-      console.log("Initial internet reachable status:", state.isInternetReachable);
+      
   
       const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
       setIsConnected(connected);

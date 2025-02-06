@@ -18,4 +18,5 @@ export type RootStackParamList = {
     [ScreenNames.Tutorial]:undefined;
     [ScreenNames.Otp]:undefined;
     [ScreenNames.Post]:undefined;
+    [ScreenNames.Scanner]:undefined;
   };

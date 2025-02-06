@@ -36,7 +36,7 @@ const PostFeed = () => {
         }`,
       );
       const data = await response.json();
-      console.log('Fetched data:', data.products);
+     
       return data.products;
     } catch (error) {
       console.error('Error fetching posts:', error);

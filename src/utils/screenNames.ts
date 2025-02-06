@@ -15,7 +15,9 @@ enum ScreenNames{
   Save='Save',
   Category='Category',
   Otp='Otp',
-  Post='Post'
+  Post='Post',
+  Scanner='Scanner',
+  Scan='Scan'
 } ;
 
 export {ScreenNames};

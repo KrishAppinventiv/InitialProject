@@ -1,20 +1,20 @@
 // Library Imports
-import React, {useContext, useEffect, useRef, useState} from 'react';
-import {KeyboardAvoidingView, Platform, ScrollView, Text, TextInput, View} from 'react-native';
-import {useTranslation} from 'react-i18next';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 import CheckBox from 'react-native-check-box';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-
+import CustomTextInput from '@krishna_gupta/custom-textinput'
 // Custom Imports
 import InputField from '../../components/TextInput';
 
 // Utility Imports
-import {ThemeContext} from '../../utils/theme-context';
-import {validateField} from '../../utils/commonfunction';
+import { validateField } from '../../utils/commonfunction';
+import { ThemeContext } from '../../utils/theme-context';
 
 // Style Imports
-import styles from './styles';
 import { colors } from '../../theme';
+import styles from './styles';
 
 const CompletionDetails = () => {
   const [isWhatsAppOptIn, setIsWhatsAppOptIn] = useState(false);
@@ -178,7 +178,29 @@ const CompletionDetails = () => {
         <Text style={styles.errorText}>{branchNameError}</Text>
       )}
 
-      <InputField
+      {/* <InputField
+        ref={deliveryTimezoneRef}
+        placeholder={t('screens.completion.deliveryTimezone')}
+        textStyle={isDarkMode ? styles.white : styles.black}
+        value={deliveryTimezone}
+        onChangeText={text => {
+          setDeliveryTimezone(text);
+          validateField(text, setDeliveryTimezoneError, 'Delivery Timezone');
+        }}
+        onSubmitEditing={() => deliveryNotesRef.current?.focus()}
+        onBlur={() =>
+          validateField(
+            deliveryTimezone,
+            setDeliveryTimezoneError,
+            'Delivery Timezone',
+          )
+        }
+        style={[
+          styles.inputField,
+          deliveryTimezoneError ? styles.errorBorder : {},
+        ]}
+      /> */}
+      <CustomTextInput
         ref={deliveryTimezoneRef}
         placeholder={t('screens.completion.deliveryTimezone')}
         textStyle={isDarkMode ? styles.white : styles.black}

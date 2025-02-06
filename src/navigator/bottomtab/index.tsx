@@ -3,15 +3,18 @@ import React, { useContext } from 'react';
 import { StyleSheet, View } from 'react-native';
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import AntDesign from 'react-native-vector-icons/AntDesign';
 import Add from '../../screens/add';
 import Home from '../../screens/Home';
 import Notification from '../../screens/notification';
-import Save from '../../screens/save';
+
 import Setting from '../../screens/setting';
 import { colors } from '../../theme';
 import { vh } from '../../utils/dimension';
 import { ScreenNames } from '../../utils/screenNames';
 import { ThemeContext } from '../../utils/theme-context';
+
+import Scan from '../../screens/save';
 const Tab = createBottomTabNavigator();
 
 const BottomTabNavigator = () => {
@@ -45,13 +48,13 @@ const BottomTabNavigator = () => {
         }}
       />
       <Tab.Screen
-        component={Save}
-        name={ScreenNames.Save}
+        component={Scan}
+        name={ScreenNames.Scan}
         options={{
           tabBarIcon: ({focused}) => (
            
             <View style={styles.normalIcon}>
-               <Fontisto name={'favorite'} size={26} color={focused?colors.main:colors.lightGrey}  style={{height:vh(40)}} />
+               <AntDesign name={'scan1'} size={26} color={focused?colors.main:colors.lightGrey}  style={{height:vh(40)}} />
             </View>
            
           ),

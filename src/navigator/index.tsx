@@ -15,6 +15,7 @@ import VerifyOtp from '../screens/verifyOtp';
 import {ScreenNames} from '../utils/screenNames';
 import {RootStackParamList} from '../utils/types';
 import BottomTabNavigator from './bottomtab';
+
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const RootNavigator = () => {
@@ -64,6 +65,7 @@ const RootNavigator = () => {
           name={ScreenNames.Login}
           options={{headerShown: false}}
         />
+         
       </Stack.Navigator>
     </NavigationContainer>
   );

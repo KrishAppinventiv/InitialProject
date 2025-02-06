@@ -9,7 +9,9 @@ import {vh} from '../../utils/dimension';
 import {ThemeContext} from '../../utils/theme-context';
 
 //Custom Import
-import CustomFlatList from '../../components/CustomFlatList';
+// import CustomFlatList from '../../components/CustomFlatList';
+
+import CustomFlatList from '@krishna_gupta/custom-flatlist';
 
 // Style Imports
 import styles from './styles';

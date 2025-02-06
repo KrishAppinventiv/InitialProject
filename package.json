@@ -1,5 +1,5 @@
 {
-  "name": "InitialProject",
+  "name": "initialproject",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -10,6 +10,10 @@
     "test": "jest"
   },
   "dependencies": {
+    "@krishna_gupta/custom-button": "^1.0.1",
+    "@krishna_gupta/custom-flatlist": "^1.0.0",
+    "@krishna_gupta/custom-textinput": "^1.0.4",
+    "@muskangoel2711/react-native-customtextinput": "^1.2.0",
     "@react-native-async-storage/async-storage": "^2.1.0",
     "@react-native-community/datetimepicker": "^8.2.0",
     "@react-native-community/netinfo": "^11.4.1",
@@ -28,22 +32,29 @@
     "react-i18next": "^15.4.0",
     "react-native": "0.76.6",
     "react-native-calendars": "^1.1308.0",
+    "react-native-camera": "^4.2.1",
     "react-native-check-box": "^2.1.7",
     "react-native-country-codes-picker": "^2.3.5",
+    "react-native-customflatlist": "^1.0.5",
     "react-native-date-picker": "^5.0.8",
     "react-native-dotenv": "^3.4.11",
     "react-native-fbsdk-next": "^13.4.0",
     "react-native-localize": "^3.4.1",
     "react-native-modal-datetime-picker": "^18.0.0",
+    "react-native-mybuttonlibrary": "^1.0.2",
     "react-native-pager-view": "^6.6.1",
     "react-native-paper": "^5.13.1",
+    "react-native-qrcode-scanner": "^1.5.5",
+    "react-native-reanimated": "^3.16.7",
     "react-native-restart": "^0.0.27",
+    "react-native-reusableinputwithpaper": "^1.0.9",
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screens": "^4.5.0",
     "react-native-splash-screen": "^3.3.0",
     "react-native-svg": "^15.11.1",
     "react-native-toast-message": "^2.2.1",
-    "react-native-vector-icons": "^10.2.0"
+    "react-native-vector-icons": "^10.2.0",
+    "react-native-vision-camera": "^4.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
@@ -70,5 +81,10 @@
   },
   "engines": {
     "node": ">=18"
-  }
+  },
+  "description": "## 🚀 Overview   This React Native project is a custom component management app featuring:",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
