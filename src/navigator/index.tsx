@@ -15,6 +15,11 @@ import VerifyOtp from '../screens/verifyOtp';
 import {ScreenNames} from '../utils/screenNames';
 import {RootStackParamList} from '../utils/types';
 import BottomTabNavigator from './bottomtab';
+import ChatScreen from '../screens/chat';
+import UserChat from '../screens/userChat';
+import Search from '../screens/search';
+import GroupChat from '../screens/groupChat';
+import GroupChatting from '../screens/groupChatting';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -65,7 +70,34 @@ const RootNavigator = () => {
           name={ScreenNames.Login}
           options={{headerShown: false}}
         />
-         
+        <Stack.Screen
+          component={ChatScreen}
+          name={ScreenNames.Chat}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          component={UserChat}
+          name={ScreenNames.UserChat}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          component={Search}
+          name={ScreenNames.Search}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          component={GroupChat}
+          name={ScreenNames.GroupChat}
+          options={{headerShown: false}}
+        />
+
+        <Stack.Screen
+          component={GroupChatting}
+          name={ScreenNames.GroupChatting}
+          options={{headerShown: false}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

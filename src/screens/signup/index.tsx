@@ -5,7 +5,8 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import {KeyboardAvoidingView,Platform, SafeAreaView,ScrollView,Text,TextInput,TouchableOpacity,View,
 } from 'react-native';
 import DatePicker from 'react-native-date-picker';
-
+import firestore from '@react-native-firebase/firestore';
+import auth from '@react-native-firebase/auth'; 
 // Custom Imports
 import Button from '../../components/Button';
 import InputField from '../../components/TextInput';
@@ -151,20 +152,46 @@ const Signup = () => {
         validatePassword(Password) &&
         validateConfirmPassword(Password, CnfrmPassword)
       ) {
+        
+
+        const nameParts = Name.trim().split(' '); 
+            const firstInitial = nameParts[0] ? nameParts[0][0].toUpperCase() : ''; 
+            const lastInitial = nameParts[1] ? nameParts[1][0].toUpperCase() : ''; 
+            const initials = firstInitial + lastInitial; // Combine initials
+        const userCredential = await auth().createUserWithEmailAndPassword(
+          Email,
+          Password
+        );
+  
+        const user = userCredential.user;
+  
+        
+        const newUser = {
+          uid: user.uid, 
+          name: Name,
+          email: Email,
+          phoneNumber: Phone,
+          profileImg: initials,
+          createdAt: firestore.FieldValue.serverTimestamp(),
+        };
+  
+        await firestore().collection('users').doc(user.uid).set(newUser);
+  
+        console.log('User registered:', user.uid);
+  
+        // showToast('success', 'Account created successfully!');
         navigation.navigate(ScreenNames.Otp);
       }
     } catch (error: any) {
+      console.error('Signup Error:', error);
       if (error.code === 'auth/email-already-in-use') {
-        showToast(
-          'success',
-          'The email address is already in use by another account.',
-        );
+        showToast('error', 'The email address is already in use.');
       } else if (error.code === 'auth/invalid-email') {
-        showToast('success', 'The email address is not valid.');
+        showToast('error', 'The email address is not valid.');
       } else if (error.code === 'auth/weak-password') {
-        showToast('success', 'Password should be at least 6 characters.');
+        showToast('error', 'Password should be at least 6 characters.');
       } else {
-        showToast('success', 'An error occurred. Please try again.');
+        showToast('error', 'An error occurred. Please try again.');
       }
     }
   };

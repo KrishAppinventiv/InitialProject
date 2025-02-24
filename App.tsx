@@ -8,7 +8,7 @@ import { FontSizeProvider } from './src/utils/FontSizeContext';
 import { ThemeProvider } from './src/utils/theme-context';
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState(true);
+  
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   useEffect(() => {
@@ -16,16 +16,16 @@ const App = () => {
       
   
       const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
-      setIsConnected(connected);
-      setIsModalVisible(!connected); // Show modal when no internet
+     
+      setIsModalVisible(!connected); 
     });
   
-    // Fetch initial network status
+    
     NetInfo.fetch().then(state => {
       
   
       const connected = state.isInternetReachable !== null ? state.isInternetReachable : false;
-      setIsConnected(connected);
+     
       setIsModalVisible(!connected);
     });
   
@@ -38,7 +38,7 @@ const App = () => {
   const checkInternetConnection = () => {
     NetInfo.fetch().then(state => {
       const connected = state.isConnected !== null ? state.isConnected : false;
-      setIsConnected(connected);
+      // setIsConnected(connected);
       setIsModalVisible(!connected); 
     });
   };

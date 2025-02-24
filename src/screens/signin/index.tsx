@@ -9,7 +9,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-
+import auth from '@react-native-firebase/auth';
 // Asset Imports
 import { Images } from '../../assets';
 
@@ -122,24 +122,65 @@ const Signin = () => {
 
  
 
+  // const handleSubmit = async () => {
+  //   const isEmailValid = validateEmail(Email);
+  //   const isPasswordValid = validatePassword(Password);
+
+  //   if (!isEmailValid || !isPasswordValid) return;
+
+  //   try {
+  //     setTimeout(() => {
+  //       showToast('success', 'User logged in successfully!');
+  //     }, 500);
+
+  //     await AsyncStorage.setItem('isLoggedIn', 'true');
+
+  //     setTimeout(() => {
+  //       navigation.replace(ScreenNames.BottomTab);
+  //     }, 2000);
+  //   } catch (error) {
+  //     showToast('error', 'User not found. Attempting to sign up...');
+  //   }
+  // };
+
   const handleSubmit = async () => {
     const isEmailValid = validateEmail(Email);
     const isPasswordValid = validatePassword(Password);
-
+  
     if (!isEmailValid || !isPasswordValid) return;
-
+  
     try {
-      setTimeout(() => {
+      // Sign in with Firebase authentication
+      const userCredential = await auth().signInWithEmailAndPassword(Email, Password);
+      const user = userCredential.user;
+      
+      if (user) {
+        console.log('User logged in successfully:', user.uid);
         showToast('success', 'User logged in successfully!');
-      }, 500);
-
-      await AsyncStorage.setItem('isLoggedIn', 'true');
-
-      setTimeout(() => {
-        navigation.replace(ScreenNames.BottomTab);
-      }, 2000);
-    } catch (error) {
-      showToast('error', 'User not found. Attempting to sign up...');
+        
+        // Store login state
+        await AsyncStorage.setItem('isLoggedIn', 'true');
+        
+        // Navigate to main screen after login
+        setTimeout(() => {
+          navigation.replace(ScreenNames.BottomTab);
+        }, 2000);
+      } else {
+        showToast('error', 'Authentication failed. Please try again.');
+      }
+    } catch (error: any) {
+      console.error('Login Error:', error);
+      
+      let errorMessage = 'An error occurred. Please try again.';
+      if (error.code === 'auth/user-not-found') {
+        errorMessage = 'User not found. Please check your email.';
+      } else if (error.code === 'auth/wrong-password') {
+        errorMessage = 'Incorrect password. Try again.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'Invalid email format.';
+      }
+  
+      showToast('error', errorMessage);
     }
   };
 

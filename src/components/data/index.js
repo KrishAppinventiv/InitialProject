@@ -118,5 +118,85 @@ export const DIET_FILTERS = [
     {title: 'Fujian Fried Rice', icon: Images.rice,name:'Sanjeev Kapoor',count:4,image:Images.jamie,time:15}
   ];
    
+  export const USER_DATA = [
+    {
+        "name": "Alice Smith",
+        "phoneNumber": "123-456-7890",
+        "profileImg": "AS",
+        "id": 1,
+        "color" : "#800000"
+        
+    },
+    {
+        "name": "Bob Johnson",
+        "phoneNumber": "987-654-3210",
+        "profileImg": "BJ",
+        "id": 2,
+        "color" : "#00008B"
+    },
+    {
+        "name": "Charlie Brown",
+        "phoneNumber": "555-123-4567",
+        "profileImg": "CB",
+        "id": 3,
+        "color" : "#800080"
+    },
+    {
+        "name": "David Wilson",
+        "phoneNumber": "444-567-8901",
+        "profileImg": "DW",
+        "id": 4,
+        "color" : "#A52A2A"
+    },
+    {
+        "name": "Alice Wonder",
+        "phoneNumber": "123-456-7899",
+        "profileImg": "AW",
+        "id": 5,
+        "color" : "#808000"
+    },
+    {
+        "name": "Cassio Zen",
+        "phoneNumber": "123-456-7990",
+        "profileImg": "CZ",
+        "id": 6,
+        "color" : "#0000FF"
+    },
+    {
+        "name": "Dan Abramov",
+        "phoneNumber": "123-456-7800",
+        "profileImg": "DA",
+        "id": 7,
+        "color" : "#ADD8E6"
+    },
+    {
+        "name": "Alice Doe",
+        "phoneNumber": "123-456-9890",
+        "profileImg": "AD",
+        "id": 8,
+        "color" : "#A52A2A"
+    },
+    {
+        "name": "John Smith",
+        "phoneNumber": "123-459-7890",
+        "profileImg": "JS",
+        "id": 9,
+        "color" : "#800000"
+    },
+    {
+        "name": "John Doe",
+        "phoneNumber": "173-456-7890",
+        "profileImg": "JD",
+        "id": 10,
+        "color" : "#808000"
+    },
+    {
+        "name": "John Stone",
+        "phoneNumber": "113-456-7890",
+        "profileImg": "JS",
+        "id": 11,
+        "color" : "#808080"
+    }
+]
 
 

@@ -1,4 +1,15 @@
+
 import { ScreenNames } from "./screenNames";
+
+export interface CustomContact {
+  lastMessageType: string;
+  lastMessage: ReactNode;
+  id: string;
+  name: string;
+  phoneNumber: number;
+  profileImg: string;
+  color: string;
+}
 
 export type RootStackParamList = {
     [ScreenNames.Home]: undefined;
@@ -11,12 +22,20 @@ export type RootStackParamList = {
     [ScreenNames.Notify]:undefined;
     [ScreenNames.Profile]:undefined;
     [ScreenNames.Save]:undefined;
-    [ScreenNames.Search]:undefined;
+    
     [ScreenNames.Setting]:undefined;
+    [ScreenNames.GroupChat]:undefined;
     [ScreenNames.Splash]:undefined;
     [ScreenNames.Login]:undefined;
     [ScreenNames.Tutorial]:undefined;
     [ScreenNames.Otp]:undefined;
     [ScreenNames.Post]:undefined;
     [ScreenNames.Scanner]:undefined;
+    [ScreenNames.UserChat]: { 
+      selectedUser?: CustomContact; 
+    };
+    
+    [ScreenNames.Search]: { contacts: CustomContact[] };  
+    [ScreenNames.Chat]: { roomId: string; selectedUser: CustomContact }; 
+    [ScreenNames.GroupChatting]: { roomId: string }; 
   };

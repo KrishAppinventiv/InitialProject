@@ -10,6 +10,7 @@ const config = {
     resolver: {
         assetExts: ['png', 'jpg', 'jpeg', 'gif', 'svg', 'ttf', 'otf', 'mp4', 'mp3'], 
     },
+    resetCache: true,
 };
 
 module.exports = mergeConfig(getDefaultConfig(__dirname), config);

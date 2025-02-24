@@ -62,6 +62,20 @@ export default StyleSheet.create({
   darkContainer: {
    backgroundColor:colors.dark
   },
+  chatButton: {
+    position: 'absolute',
+    top: 10,  
+    right: 15,
+    backgroundColor: colors.lightGrey,
+    padding: 10,
+    borderRadius: 30,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 6, 
+   
+  },
   
     
 })

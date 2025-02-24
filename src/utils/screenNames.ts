@@ -1,3 +1,5 @@
+import GroupChat from "../screens/groupChat";
+
 enum ScreenNames{
   Home= 'Home',
   Login= 'Login',
@@ -17,7 +19,11 @@ enum ScreenNames{
   Otp='Otp',
   Post='Post',
   Scanner='Scanner',
-  Scan='Scan'
+  Scan='Scan',
+  Chat='Chat',
+  UserChat='UserChat',
+  GroupChat = 'GroupChat',
+  GroupChatting = 'GroupChatting'
 } ;
 
 export {ScreenNames};

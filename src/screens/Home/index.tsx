@@ -1,6 +1,6 @@
 // Library Imports
 import React, { useContext, useState } from 'react';
-import { Image, StatusBar, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Modal, Pressable, StatusBar, Text, TouchableOpacity, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { t } from 'i18next';
 
@@ -48,10 +48,20 @@ const Home = () => {
                 {t('screens.home.searchPlaceholder')}
               </Text>
             </TouchableOpacity>
+          
           </View>
+          
         </View>
+
       </View>
+      <TouchableOpacity
+              style={styles.chatButton}
+              onPress={() => navigation.navigate(ScreenNames.UserChat)}>
+              <Ionicons name="chatbubble-ellipses-outline" size={28} color={colors.main} />
+            </TouchableOpacity>
       <PostFeed/>
+
+    
     </View>
   );
 };

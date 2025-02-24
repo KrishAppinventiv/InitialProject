@@ -1,18 +1,35 @@
 
 const Images = {
   splash_img: require('./images/splash_img.png'),
-  
   tutorial:  require('./images/tutorial.png'),
-  
   cooking:  require('./images/cooking.png'),
- 
   chef:  require('./images/chef.png'), 
   google:  require('./images/google.png'),
-  
+  emoji1: require('./images/emoji1.png'),
+  emoji2: require('./images/emoji2.png'),
+  emoji3: require('./images/emoji3.png'),
+  emoji4: require('./images/emoji4.png'),
+  emoji5: require('./images/emoji5.png'),
   top:require('./images/top.png'),
   backarrow: require('./images/backarrow.png'),
   bookmark: require('./images/bookmark.png'),
-  docnotify: require('./images/docnotify.png')
+  docnotify: require('./images/docnotify.png'),
+  delete : require('./images/delete.png'),
+  reply : require('./images/reply.png'),
+  star : require('./images/star.png'),
+  forward : require('./images/forward.png'),
+  copy : require('./images/copy.png'),
+  edit : require('./images/edit.png'),
+  eye : require('./images/eye.png'),
+  search : require('./images/search.png'),
+  pin : require('./images/pin.png'),
+  chat :  require('./images/chat.png'),
+  announce:  require('./images/announce.png'),
+  group :   require('./images/group.png'),
+  add :   require('./images/add.png'),
+  menu:   require('./images/menu.png'),
+  checkbox:   require('./images/checkbox.png'),
 };  
+
 
 export {Images};
